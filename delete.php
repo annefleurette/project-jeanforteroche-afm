@@ -12,21 +12,21 @@ session_start();
     </head>
     <body>
         <div class="container">
-            <?php include("header.php");?>
-            <section id="supprimer-episode">
+            <section id="delete-episode">
                 <?php
                     // Connexion à la base de données
                     try
                     {
-                    $bdd = new PDO('mysql:host=localhost;dbname=roman;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                    $bdd = new PDO('mysql:host=localhost;dbname=novel;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                     }
                     catch(Exception $e)
                     {
                     die('Erreur : '.$e->getMessage());
                     }
                     // On modifie l'épisode
-                    $req = $bdd->prepare('DELETE FROM episodes WHERE episode_numero = ?');
-                    /*$req->execute(array($_GET['numero']));*/
+                    $req = $bdd->prepare('DELETE FROM episodes WHERE episode_number = ?');
+                    $req->execute(array($_GET['numero']));
+                    header('Location: admin.php');
                 ?>
             </section>
         </div>            
