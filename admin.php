@@ -52,6 +52,26 @@ session_start();
                                         if($episode_all['episode_number'] == $count_episode_published) {
                                         ?>
                                         <li><button type="button" data-toggle="modal" data-target="#Modal">Supprimer</button></li>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Êtes-vous sûr(e) de vouloir supprimer cet épisode ?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <a href="delete_episode.php?number=<?php echo htmlspecialchars($episode_all['episode_number']); ?>" class="btn btn__admin">Confirmer</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <?php
                                         }
                                         ?>
@@ -59,26 +79,6 @@ session_start();
                                 </article>
                             </li>
                         </ul>
-                         <!-- Modal -->
-                            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Êtes-vous sûr(e) de vouloir supprimer cet épisode ?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                            <a href="delete_episode.php?number=<?php echo htmlspecialchars($episode_all['episode_number']); ?>" class="btn btn__admin">Confirmer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         <?php
                     }
                     // Fin de la boucle des épisodes

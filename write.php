@@ -12,7 +12,7 @@ session_start();
         <script src='https://cdn.tiny.cloud/1/rusvh5uity3vzz9zncbvyfu2ngucer16rijxcr2fhxwkn4mb/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
         <script>
             tinymce.init({
-            selector: '#mytextarea',
+            selector: '#content',
             height: 300
             });
         </script>
@@ -33,7 +33,7 @@ session_start();
                     </p>
                     <p>
                         <label for="content">Contenu de l'épisode</label><br />
-                        <textarea id="content" name="content" required></textarea>
+                        <textarea id="content" name="content"></textarea>
                     </p>
                     <p>
                         <input type="submit" name="look" value="Aperçu">
