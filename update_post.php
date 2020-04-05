@@ -24,15 +24,7 @@ session_start();
                     {
                     die('Erreur : '.$e->getMessage());
                     }
-                    if(isset($_POST['look'])){ // Si le bouton Aperçu est choisi
-                    include("header.php");?>
-                        <h1><?php echo $_POST['title'];?></h1>
-                        <h2>Episode n°<?php echo $_GET['number'];?></h2>
-                        <p><?php echo $_POST['content'];?></p>
-                        <a href="#">Retour</a>
-                    <?php
-                    include("footer.php");
-                    } elseif(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
+                    if(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
                         // Enregistrement de l'épisode à modifier dans la base de données
                         // Si les données ont bien été saisies
                         if (isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))
@@ -41,14 +33,15 @@ session_start();
                             $look = $bdd->prepare('SELECT * FROM episodes WHERE episode_number = ? AND episode_status="published"');
                             $look->execute(array($_POST['number']));
                             $episode_result = $look->fetch();
-                            $status = "inprogress";
+                            $status_progress = "inprogress";
                             if (empty($episode_result)){
-                                $req = $bdd->prepare('UPDATE episodes SET episode_number = :newnumber, episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus');
+                                $req = $bdd->prepare('UPDATE episodes SET episode_number = :newnumber, episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
                                 $req->execute(array(
                                     'newnumber' => $_POST['number'],
                                     'newtitle' => $_POST['title'],
                                     'newcontent' => $_POST['content'],
-                                    'newstatus' => $status
+                                    'newstatus' => $status_progress,
+                                    'id' => $_GET['number']
                                 ));
                                 $req->closeCursor();    
                                 header('Location: admin.php');
@@ -58,20 +51,20 @@ session_start();
                                     <a href="admin.php">Recommencer</a>
                                     <?php
                             }
-                               $look->closeCursor();
+                            $look->closeCursor();
                         }
                     } else { // Si le bouton Publier est choisi
                         // Enregistrement de l'épisode à publier dans la base de données
                         // Si les données ont bien été saisies
                         if (isset($_POST['title']) AND isset($_POST['content']))
                         {
-                            $status = "published";
-                            $number = $_GET['number'];
-                            $req = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE episode_number = "$number"');
+                            $status_published = "published";
+                            $req = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
                                 $req->execute(array(
                                     'newtitle' => $_POST['title'],
                                     'newcontent' => $_POST['content'],
-                                    'newstatus' => $status
+                                    'newstatus' => $status_published,
+                                    'id' => $_GET['number']
                                 ));
                                 $req->closeCursor();    
                                 header('Location: admin.php');

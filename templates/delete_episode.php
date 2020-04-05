@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -23,9 +20,9 @@ session_start();
                     {
                     die('Erreur : '.$e->getMessage());
                     }
-                    // On modifie l'épisode
-                    $req = $bdd->prepare('DELETE FROM episodes WHERE episode_number = ?');
-                    $req->execute(array($_GET['numero']));
+                    // On supprime l'épisode
+                    $req = $bdd->prepare('DELETE FROM episodes WHERE id = ?');
+                    $req->execute(array($_GET['number']));
                     header('Location: admin.php');
                 ?>
             </section>

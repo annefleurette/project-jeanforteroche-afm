@@ -26,15 +26,7 @@ session_start();
         $episode_published = $count->fetch();
         $count_episode_published = intval($episode_published['numberEpisodesPublished']);
         $count_episode_publishable = $count_episode_published + 1;
-		if(isset($_POST['look'])){ // Si le bouton Aperçu est choisi
-			include("header.php");?>
-				<h1><?php echo $_POST['title'];?></h1>
-				<h2>Episode n°<?php echo $_POST['number'];?></h2>
-				<p><?php echo $_POST['content'];?></p>
-				<a href="#">Retour</a>
-			<?php
-			include("footer.php"); 
-		} elseif(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
+		if(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
 			// Enregistrement de l'épisode dans la base de données
 			// Si les données ont bien été saisies
 			if (isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))

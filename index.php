@@ -34,7 +34,7 @@ session_start();
                         $req = $bdd->query('SELECT episode_number FROM episodes WHERE episode_number = 1');
                         $episode_first = $req->fetch()
                         ?>
-                        <a href="read.php?episode=<?php echo htmlspecialchars($episode_first['episode_number']); ?>" class="btn btn__episode1">Démarrer la lecture !</a>
+                        <a href="episode.php?number=<?php echo htmlspecialchars($episode_first['episode_number']); ?>" class="btn btn__episode1">Démarrer la lecture !</a>
                         <?php
                         // Fin de la requête du premier épisode
                         $req->closeCursor();
@@ -47,25 +47,30 @@ session_start();
                     <?php
                         // On récupère les 3 derniers épisodes
                         $req = $bdd->query('SELECT episode_number, episode_title, episode_content FROM episodes WHERE episode_status = "published" ORDER BY episode_number DESC LIMIT 0, 3');
-                        while ($episode_three = $req->fetch())
-                        {
-                    ?>
-                    <ul> <!-- On affiche les 3 derniers épisodes -->
-                        <li>
-                            <article>
-                                <p>Episode n°<?php echo htmlspecialchars($episode_three['episode_number']); ?> :</p>
-                                <h3><?php echo htmlspecialchars($episode_three['episode_title']); ?></h3>
-                                <a href="episode.php?number=<?php echo htmlspecialchars($episode_three['episode_number']); ?>" class="btn btn__read">Lire l'épisode</a>
-                            </article>
-                        </li>
-                    </ul>
-                    <?php
-                        }
-                        // Fin de la boucle des épisodes
+                        $episode_three = $req->fetchAll();
                         $req->closeCursor();
-                    ?>
-                                            
-                    <a href="read.php" class="btn btn__CTA">Voir tous les épisodes</a>
+                        $nbepisode_three = count($episode_three);
+                        if($nbepisode_three > 0) {
+                            foreach ($episode_three as $last_episode_three){
+                            ?>
+                                <ul> <!-- On affiche les 3 derniers épisodes -->
+                                    <li>
+                                        <article>
+                                            <p>Episode n°<?php echo htmlspecialchars($last_episode_three['episode_number']); ?> :</p>
+                                            <h3><?php echo htmlspecialchars($last_episode_three['episode_title']); ?></h3>
+                                            <a href="episode.php?number=<?php echo htmlspecialchars($last_episode_three['episode_number']); ?>" class="btn btn__read">Lire l'épisode</a>
+                                        </article>
+                                    </li>
+                                </ul>
+                            <?php
+                            }
+                        }else{
+                            ?>
+                            <p>Pas d'épisode publié</p>
+                            <?php
+                        }
+                    ?>                            
+                    <a href="episode.php" class="btn btn__CTA">Voir tous les épisodes</a>
                 </div>
             </section>
             <section id="novel-author"> <!-- Section qui présente l'auteur -->

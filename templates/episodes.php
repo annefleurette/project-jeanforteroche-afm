@@ -27,35 +27,41 @@
                     $reading_pages = ceil(($reading['numberEpisodes'])/3);
                     if (isset($_GET['page']) && ($_GET['page'] > 0))
                     {
-                    $page = $_GET['page'];
+                        $page = $_GET['page'];
                     }else{
-                    $page = 1;
+                        $page = 1;
                     }
                     if ($page > $reading_pages) {
                         $page = $reading_pages;
                     }
                     // On récupère les épisodes
                     $req = $bdd->query('SELECT episode_number, episode_title, episode_content FROM episodes WHERE episode_status = "published" ORDER BY episode_number LIMIT '. ($page-1)*3 .',3');
-                    while ($episode_all = $req->fetch())
-                    {
-                ?>
-                <ul> <!-- On affiche les épisodes -->
-                    <li>
-                        <article>
-                            <p>Episode n°<?php echo htmlspecialchars($episode_all['episode_number']); ?> :</p>
-                            <h1><?php echo htmlspecialchars($episode_all['episode_title']); ?></h2>
-                            <a href="episode.php?number=<?php echo htmlspecialchars($episode_all['episode_number']); ?>" class="btn btn__read">Lire l'épisode</a>
-                        </article>
-                    </li>
-                </ul>
-                <?php
-                    }
-                    //Affichage des pages avec 3 épisodes par page
-                    for($pages=1 ; $pages<= $reading_pages ; $pages++){
-                        echo '<a href="read.php?page='. $pages . '" style="margin:2px;">' . $pages . '</a>';
-                    }
-                    // Fin de la boucle des épisodes
+                    $episode_all = $req->fetchAll();
                     $req->closeCursor();
+                    $nbepisode_all = count($episode_all);
+                        if($nbepisode_all > 0) {
+                            foreach ($episode_all as $episodes_all){
+                            ?>
+                                <ul> <!-- On affiche les épisodes -->
+                                    <li>
+                                        <article>
+                                            <p>Episode n°<?php echo htmlspecialchars($episodes_all['episode_number']); ?> :</p>
+                                            <h1><?php echo htmlspecialchars($episodes_all['episode_title']); ?></h2>
+                                            <a href="episode.php?number=<?php echo htmlspecialchars($episodes_all['episode_number']); ?>" class="btn btn__read">Lire l'épisode</a>
+                                        </article>
+                                    </li>
+                                </ul>
+                            <?php
+                            }
+                            //Affichage des pages avec 3 épisodes par page
+                            for($pages=1 ; $pages<= $reading_pages ; $pages++){
+                                echo '<a href="episode.php?page='. $pages . '" style="margin:2px;">' . $pages . '</a>';
+                            }
+                        }else{
+                            ?>
+                            <p>Pas d'épisode publié</p>
+                            <?php
+                        }
                     $pagination->closeCursor();
                 ?>
             </section>

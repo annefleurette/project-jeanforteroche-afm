@@ -13,6 +13,7 @@ session_start();
         <script>
             tinymce.init({
             selector: '#content',
+            content_css : 'style.css',
             height: 300
             });
         </script>
@@ -36,7 +37,6 @@ session_start();
                         <textarea id="content" name="content"></textarea>
                     </p>
                     <p>
-                        <input type="submit" name="look" value="Aperçu">
                         <input type="submit" name="save" value="Enregistrer">
                         <input type="submit" name="publish" value="Publier">
                     </p>

@@ -5,7 +5,7 @@
     <nav>
         <ul>
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="read.php">Tous les épisodes</a></li>
+            <li><a href="episode.php">Tous les épisodes</a></li>
             <?php if (isset($_SESSION['pseudo'])) {
             ?>
                 <li><a href="admin.php">Administration</a></li>

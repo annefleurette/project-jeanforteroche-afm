@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +16,7 @@ session_start()
             <?php include("header.php");?>
             <section id="subscription">
                 <?php
-                if(!$_SESSION['pseudo']) { // 
+                if(!isset($_SESSION['pseudo'])) { //On vérifie que la personne n'est pas déjà connectée 
                 ?>
                 <form action="subscription_post.php>" method="post">
                     <p>
@@ -39,6 +39,7 @@ session_start()
                         <input type="submit" value="S'inscrire">
                     </p>
                 </form>
+                <p>Vous avez déjà un compte. <a href="login.php">Connectez-vous</a></p>
                 <?php
                 }else{
                 ?>

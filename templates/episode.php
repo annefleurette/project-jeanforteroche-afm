@@ -36,7 +36,7 @@
                         ?>
                         <h1>BILLET SIMPLE POUR L'ALASKA</h1>
                         <h2>Episode n°<?php echo $_GET['number']?> : <?php echo htmlspecialchars($episode_unitary['episode_title']); ?></h2>
-                        <p><?php echo htmlspecialchars($episode_unitary['episode_content']);?></p>
+                        <p><?php echo htmlspecialchars($episode_unitary['episode_content']); ?></p>
                         <?php // Affichage des boutons épisodes précédents/suivants
                         if ($episode_current <= 1) {
                         ?>
@@ -55,7 +55,7 @@
                         ?>
                         <h2>Commentaires</h2>
                         <?php // Récupération des commentaires
-                        $comment_recup = $bdd->prepare('SELECT author, comment, DATE_FORMAT(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM comments WHERE id_episode = ? ORDER BY date_comment');
+                        $comment_recup = $bdd->prepare('SELECT id, author, comment, DATE_FORMAT(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM comments WHERE id_episode = ? ORDER BY date_comment');
                         $comment_recup->execute(array($_GET['number']));
                         $comments = $comment_recup->fetchAll();
                         $comment_recup->closeCursor();
@@ -65,23 +65,18 @@
                                 ?>
                                 <p><?php echo htmlspecialchars($comment_data['author']); ?> le <?php echo $comment_data['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br(htmlspecialchars($comment_data['comment'])); ?></p>
+                                <form action="alert_post.php?number=<?php echo $comment_data['id'];?>" method="post">
+                                    <input type="submit" value="Signaler">
+                                </form>
                                 <?php
                             }
                         }else{
                             ?>
                             <p>Pas de commentaire</p>
                             <?php     
-                        }
-                    }else{
+                        } // Laisser un commentaire
                         ?>
-                        <p>L'épisode que vous cherchez n'existe pas !</p>
-                        <?php
-                    }
-                        // Fin de la requête
-                        $req->closeCursor();
-                        $pagination->closeCursor(); 
-                    ?>
-                    <h2>Laissez un commentaire</h2>
+                        <h2>Laissez un commentaire</h2>
                         <form action="comment_post.php?number=<?php echo $_GET['number'];?>" method="post">
                             <p>
                                 <label for="author">Pseudo :</label><br />
@@ -95,6 +90,17 @@
                                 <input type="submit" value="Envoyer">
                             </p>
                         </form>
+                    <?php
+                    }else{
+                    ?>
+
+                        <p>L'épisode que vous cherchez n'existe pas !</p>
+                        <?php
+                    }
+                        // Fin de la requête
+                        $req->closeCursor();
+                        $pagination->closeCursor(); 
+                    ?>
             </section>
             <?php include("footer.php");?>
         </div>
