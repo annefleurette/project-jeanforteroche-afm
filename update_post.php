@@ -39,6 +39,9 @@ session_start();
                             $look->execute(array($_POST['number']));
                             $episode_result = $look->fetch();
                             $status_progress = "inprogress";
+                            $_POST['number'] = htmlspecialchars($_POST['number']);
+                            $_POST['title'] = htmlspecialchars($_POST['title']);
+                            $_POST['content'] = htmlspecialchars($_POST['content']);
                             if (empty($episode_result)){
                                 $req = $bdd->prepare('UPDATE episodes SET episode_number = :newnumber, episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
                                 $req->execute(array(
@@ -47,8 +50,7 @@ session_start();
                                     'newcontent' => $_POST['content'],
                                     'newstatus' => $status_progress,
                                     'id' => $_GET['number']
-                                ));
-                                $req->closeCursor();    
+                                ));  
                                 header('Location: admin.php');
                             } else {
                                     ?>
@@ -69,6 +71,9 @@ session_start();
                             $look_current->execute(array($_GET['number']));
                             $look_current_value = $look_current->fetch();
                             $current_episode = intval($look_current_value);
+                            $_GET['number'] = htmlspecialchars($_GET['number']);
+                            $_POST['title'] = htmlspecialchars($_POST['title']);
+                            $_POST['content'] = htmlspecialchars($_POST['content']);
                             //$episode_result = $look->fetch();
 					        if ($current_episode <= $count_episode_publishable){
                                 $status_published = "published";
@@ -79,7 +84,6 @@ session_start();
                                         'newstatus' => $status_published,
                                         'id' => $_GET['number']
                                     ));
-                                    $req->closeCursor();    
                                     header('Location: admin.php');
                             }else{
                                 ?>

@@ -27,6 +27,9 @@ session_start();
                     // Si l'utilisateur est connecté
                 if(isset($_SESSION['pseudo'])) {
                     if (isset($_POST['author']) AND isset($_POST['comment'])){ // Si le pseudo et le commentaire existent bien
+                    $_GET['number'] = htmlspecialchars($_GET['number']);
+                    $_POST['author'] = htmlspecialchars($_POST['author']);
+                    $_POST['comment'] = htmlspecialchars($_POST['comment']);
                     $req = $bdd->prepare('INSERT INTO comments (id_episode, author, comment, date_comment) VALUES(?, ?, ?, NOW())');
                     $req->execute(array($_GET['number'], $_POST['author'], $_POST['comment']));
                     header('Location: episode.php?number=' . $_GET['number']);

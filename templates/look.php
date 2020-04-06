@@ -4,8 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="style.css" />
-        <title>Billet simple pour l'Alaska - Ecrire un nouvel épisode</title>
-        <meta name="description" content="L'écriture d'un nouvel épisode par Jean Forteroche">
+        <title>Billet simple pour l'Alaska - Aperçu</title>
+        <meta name="description" content="L'aperçu d'un nouvel épisode par Jean Forteroche">
     </head>
     <body>
         <div class="container">

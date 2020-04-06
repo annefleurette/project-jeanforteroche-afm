@@ -6,9 +6,13 @@
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="episode.php">Tous les épisodes</a></li>
-            <?php if (isset($_SESSION['pseudo'])) {
+            <?php if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "admin") {
             ?>
                 <li><a href="admin.php">Administration</a></li>
+                <li><a href="logout.php">Se déconnecter</a></li>
+            <?php
+            } elseif (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
+            ?>
                 <li><a href="logout.php">Se déconnecter</a></li>
             <?php
             } else {

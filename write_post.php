@@ -35,10 +35,12 @@ session_start();
 				$look = $bdd->prepare('SELECT * FROM episodes WHERE episode_number = ? AND episode_status="published"');
 				$look->execute(array($_POST['number']));
 				$episode_result = $look->fetch();
+				$_POST['number'] = htmlspecialchars($_POST['number']);
+				$_POST['title'] = htmlspecialchars($_POST['title']);
+				$_POST['content'] = htmlspecialchars($_POST['content']);
 				if (empty($episode_result)){
 					$req = $bdd->prepare('INSERT INTO episodes (episode_number, episode_title, episode_content, episode_status) VALUES(?, ?, ?, \'inprogress\')');
-					$req->execute(array($_POST['number'], $_POST['title'], $_POST['content']));
-					$req->closeCursor();	
+					$req->execute(array($_POST['number'], $_POST['title'], $_POST['content']));	
 					header('Location: admin.php');
 				} else {
 						?>
@@ -58,10 +60,12 @@ session_start();
 				$look->execute(array($_POST['number']));
 				$current_episode = intval($_POST['number']);
 				$episode_result = $look->fetch();
+				$_POST['number'] = htmlspecialchars($_POST['number']);
+				$_POST['title'] = htmlspecialchars($_POST['title']);
+				$_POST['content'] = htmlspecialchars($_POST['content']);
 					if (empty($episode_result) AND ($current_episode == $count_episode_publishable)){
 						$req = $bdd->prepare('INSERT INTO episodes (episode_number, episode_title, episode_content, episode_status) VALUES(?, ?, ?, \'published\')');
 						$req->execute(array($_POST['number'], $_POST['title'], $_POST['content']));
-						$req->closeCursor();
 						header('Location: admin.php');
 					} else {
 						?>

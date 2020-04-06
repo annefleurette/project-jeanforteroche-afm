@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="style.css" />
-        <title>Billet simple pour l'Alaska - Episodes</title>
+        <title>Billet simple pour l'Alaska - Episode</title>
         <meta name="description" content="Un homme malade explore l'Alaska pendant le dernier mois qui lui reste à vivre.">
     </head>
     <body>  	

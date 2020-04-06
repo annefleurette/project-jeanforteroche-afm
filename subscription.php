@@ -7,7 +7,7 @@ session_start();
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="style.css" />
-        <title>Billet simple pour l'Alaska - Connexion</title>
+        <title>Billet simple pour l'Alaska - Inscription</title>
         <meta name="description" content="Inscription au blog du roman Billet simple pour l'Alaska.">
     </head>
     <body>
@@ -18,7 +18,7 @@ session_start();
                 <?php
                 if(!isset($_SESSION['pseudo'])) { //On vérifie que la personne n'est pas déjà connectée 
                 ?>
-                <form action="subscription_post.php>" method="post">
+                <form action="subscription_post.php" method="post">
                     <p>
                         <label for="pseudo">Pseudo</label><br />
                         <input type="text" id="pseudo" name="pseudo" minlength = "4" maxlength="20" required>
@@ -29,11 +29,11 @@ session_start();
                     </p>
                     <p>
                         <label for="password">Mot de passe</label><br />
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" min="6" required>
                     </p>
                     <p>
-                        <label for="password">Confirmer le mot de passe</label><br />
-                        <input type="password" id="password" name="password" required>
+                        <label for="password2">Confirmer le mot de passe</label><br />
+                        <input type="password" id="password2" name="password2" min="6" required>
                     </p>
                     <p>
                         <input type="submit" value="S'inscrire">

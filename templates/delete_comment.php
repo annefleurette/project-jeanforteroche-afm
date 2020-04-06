@@ -4,8 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="style.css" />
-        <title>Billet simple pour l'Alaska - Supprimer l'épisode</title>
-        <meta name="description" content="La suppression d'un épisode par Jean Forteroche">
+        <title>Billet simple pour l'Alaska - Supprimer le commentaire</title>
+        <meta name="description" content="La suppression d'un commentaire par Jean Forteroche">
     </head>
     <body>
         <div class="container">
