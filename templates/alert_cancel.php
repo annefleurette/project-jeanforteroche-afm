@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="style.css" />
-        <title>Billet simple pour l'Alaska - Signaler un commentaire</title>
+        <title>Billet simple pour l'Alaska - Enlever le signalement d'un commentaire</title>
     </head>
 <body>
 <?php
@@ -20,9 +20,8 @@ die('Erreur : '.$e->getMessage());
 $alert_all = $bdd->query('SELECT id FROM comments');
 $list_alert_all = $alert_all->fetchAll();
 $alert_all->closeCursor();
-$alert_update = "oui";
+$alert_update = "non";
 $id_comment = intval($_GET['number']);
-if(in_array($id_comment, $list_alert_all)) {
 	$req = $bdd->prepare('UPDATE comments SET alert = :newalert WHERE id = :id');
 	$req->execute(array(
 	'newalert' => $alert_update,
@@ -30,13 +29,10 @@ if(in_array($id_comment, $list_alert_all)) {
 	));
 	include("header.php");
 	?>
-	<p>Le commentaire a été signalé à l'administration</p>
-	<a href="episode.php">Retour</a>
+	<p>Le commentaire n'est plus signalé</p>
+	<a href="admin.php">Retour</a>
 	<?php
 	include("footer.php");
-}else{
-	header('Location: 404error.php');
-}
 ?>
 </body>
 </html>

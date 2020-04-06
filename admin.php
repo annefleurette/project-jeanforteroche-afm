@@ -154,6 +154,7 @@ session_start();
                                 <p><?php echo htmlspecialchars($published_comment['author']); ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br(htmlspecialchars($published_comment['comment'])); ?></p>
                                 <a href="delete_comment.php?number=<?php echo htmlspecialchars($published_comment['id']); ?>" class="btn btn__admin">Supprimer</a>
+                                <a href="alert_cancel.php?number=<?php echo htmlspecialchars($published_comment['id']); ?>" class="btn btn__admin">Annuler le signalement</a>
                             <?php
                             }
                         }else{

@@ -24,6 +24,11 @@ session_start();
                     {
                     die('Erreur : '.$e->getMessage());
                     }
+                    // On compte le nombre d'épisodes publiés
+                    $count = $bdd->query('SELECT COUNT(*) AS numberEpisodesPublished FROM episodes WHERE episode_status = "published"');
+                    $episode_published = $count->fetch();
+                    $count_episode_published = intval($episode_published['numberEpisodesPublished']);
+                    $count_episode_publishable = $count_episode_published + 1;
                     if(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
                         // Enregistrement de l'épisode à modifier dans la base de données
                         // Si les données ont bien été saisies
@@ -58,17 +63,33 @@ session_start();
                         // Si les données ont bien été saisies
                         if (isset($_POST['title']) AND isset($_POST['content']))
                         {
-                            $status_published = "published";
-                            $req = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
-                                $req->execute(array(
-                                    'newtitle' => $_POST['title'],
-                                    'newcontent' => $_POST['content'],
-                                    'newstatus' => $status_published,
-                                    'id' => $_GET['number']
-                                ));
-                                $req->closeCursor();    
-                                header('Location: admin.php');
+                            // Si le numéro d'épisode n'existe pas déjà parmi les épisodes publiés et si ce numéro est bien le +1 du dernier épisode publié
+                            //$look = $bdd->query('SELECT episode_number FROM episodes WHERE episode_status="published"');
+                            $look_current = $bdd->prepare('SELECT episode_number FROM episodes WHERE id = ?'); 
+                            $look_current->execute(array($_GET['number']));
+                            $look_current_value = $look_current->fetch();
+                            $current_episode = intval($look_current_value);
+                            //$episode_result = $look->fetch();
+					        if ($current_episode <= $count_episode_publishable){
+                                $status_published = "published";
+                                $req = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
+                                    $req->execute(array(
+                                        'newtitle' => $_POST['title'],
+                                        'newcontent' => $_POST['content'],
+                                        'newstatus' => $status_published,
+                                        'id' => $_GET['number']
+                                    ));
+                                    $req->closeCursor();    
+                                    header('Location: admin.php');
+                            }else{
+                                ?>
+                                <p>Vous ne pouvez publier que l'épisode suivant du dernier épisode publié</p>
+                                <a href="admin.php">Recommencer</a>
+                                <?php
+                            }
                         }
+                        $look_current->closeCursor();
+                        $count->closeCursor();
                     }
                 ?>
             </section>

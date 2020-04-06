@@ -32,7 +32,7 @@ session_start();
                         <?php
                         // On récupère le lien vers le premier épisode pour démarrer la série
                         $req = $bdd->query('SELECT episode_number FROM episodes WHERE episode_number = 1');
-                        $episode_first = $req->fetch()
+                        $episode_first = $req->fetch();
                         ?>
                         <a href="episode.php?number=<?php echo htmlspecialchars($episode_first['episode_number']); ?>" class="btn btn__episode1">Démarrer la lecture !</a>
                         <?php
