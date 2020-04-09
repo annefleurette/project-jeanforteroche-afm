@@ -37,7 +37,6 @@ session_start();
 				$episode_result = $look->fetch();
 				$_POST['number'] = htmlspecialchars($_POST['number']);
 				$_POST['title'] = htmlspecialchars($_POST['title']);
-				$_POST['content'] = htmlspecialchars($_POST['content']);
 				if (empty($episode_result)){
 					$req = $bdd->prepare('INSERT INTO episodes (episode_number, episode_title, episode_content, episode_status) VALUES(?, ?, ?, \'inprogress\')');
 					$req->execute(array($_POST['number'], $_POST['title'], $_POST['content']));	
@@ -62,7 +61,6 @@ session_start();
 				$episode_result = $look->fetch();
 				$_POST['number'] = htmlspecialchars($_POST['number']);
 				$_POST['title'] = htmlspecialchars($_POST['title']);
-				$_POST['content'] = htmlspecialchars($_POST['content']);
 					if (empty($episode_result) AND ($current_episode == $count_episode_publishable)){
 						$req = $bdd->prepare('INSERT INTO episodes (episode_number, episode_title, episode_content, episode_status) VALUES(?, ?, ?, \'published\')');
 						$req->execute(array($_POST['number'], $_POST['title'], $_POST['content']));

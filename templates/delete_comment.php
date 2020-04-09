@@ -22,7 +22,7 @@
                     }
                     // On supprime le commentaire
                     $req = $bdd->prepare('DELETE FROM comments WHERE id = ?');
-                    $req->execute(array($_GET['number']));
+                    $req->execute(array($_GET['id']));
                     header('Location: admin.php');
                 ?>
             </section>

@@ -30,7 +30,7 @@ session_start();
             // Si le pseudo est bien nouveau
             if(!in_array($_POST['pseudo'], $look_all['pseudo']) OR !in_array($_POST['email'], $look_all['email'])) {
                 // Si l'adresse email possède bien le bon format
-                if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,]\.[a-z]{2,4}$#", $_POST['email'])) {
+                if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])) {
                     //Si le mot de passe correspond bien à sa vérification
                     if($_POST['password'] == $_POST['password2']) {
                         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);

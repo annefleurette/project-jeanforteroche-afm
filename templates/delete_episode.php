@@ -22,7 +22,7 @@
                     }
                     // On supprime l'épisode
                     $req = $bdd->prepare('DELETE FROM episodes WHERE id = ?');
-                    $req->execute(array($_GET['number']));
+                    $req->execute(array($_GET['id']));
                     header('Location: admin.php');
                 ?>
             </section>

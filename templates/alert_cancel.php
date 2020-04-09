@@ -21,11 +21,11 @@ $alert_all = $bdd->query('SELECT id FROM comments');
 $list_alert_all = $alert_all->fetchAll();
 $alert_all->closeCursor();
 $alert_update = "non";
-$id_comment = intval($_GET['number']);
+$id_comment = intval(htmlspecialchars($_GET['id']));
 	$req = $bdd->prepare('UPDATE comments SET alert = :newalert WHERE id = :id');
 	$req->execute(array(
 	'newalert' => $alert_update,
-	'id' => $_GET['number']
+	'id' => htmlspecialchars($_GET['id'])
 	));
 	include("header.php");
 	?>

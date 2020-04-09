@@ -23,20 +23,20 @@
                     }
                     // Récupération de l'épisode
                     $req = $bdd->prepare('SELECT episode_title, episode_content FROM episodes WHERE episode_number = ?');
-                    $req->execute(array($_GET['number']));
+                    $req->execute(array(htmlspecialchars($_GET['number'])));
                     $episode_unitary = $req->fetch();
                     //Récupération du nombre d'épisodes
                     $pagination = $bdd->query('SELECT COUNT(*) AS numberEpisodes FROM episodes');
                     $reading = $pagination->fetch();
                     $reading_pages = $reading['numberEpisodes'];
                     if (!empty($episode_unitary)) {
-                        $episode_current = intval($_GET['number']);
+                        $episode_current = intval(htmlspecialchars($_GET['number']));
                         $episode_before = $episode_current - 1;
                         $episode_next = $episode_current + 1;
                         ?>
                         <h1>BILLET SIMPLE POUR L'ALASKA</h1>
-                        <h2>Episode n°<?php echo $_GET['number']?> : <?php echo htmlspecialchars($episode_unitary['episode_title']); ?></h2>
-                        <p><?php echo htmlspecialchars($episode_unitary['episode_content']); ?></p>
+                        <h2>Episode n°<?php echo htmlspecialchars($_GET['number']);?> : <?php echo $episode_unitary['episode_title']; ?></h2>
+                        <p><?php echo $episode_unitary['episode_content']; ?></p>
                         <?php // Affichage des boutons épisodes précédents/suivants
                         if ($episode_current <= 1) {
                         ?>
@@ -56,15 +56,15 @@
                         <h2>Commentaires</h2>
                         <?php // Récupération des commentaires
                         $comment_recup = $bdd->prepare('SELECT id, author, comment, DATE_FORMAT(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM comments WHERE id_episode = ? ORDER BY date_comment');
-                        $comment_recup->execute(array($_GET['number']));
+                        $comment_recup->execute(array(htmlspecialchars($_GET['number'])));
                         $comments = $comment_recup->fetchAll();
                         $comment_recup->closeCursor();
                         $nbcomments = count($comments);
                         if($nbcomments > 0) {
                             foreach ($comments as $comment_data){
                                 ?>
-                                <p><?php echo htmlspecialchars($comment_data['author']); ?> le <?php echo $comment_data['date_comment_fr']; ?></p>
-                                <p><?php echo nl2br(htmlspecialchars($comment_data['comment'])); ?></p>
+                                <p><?php echo $comment_data['author']; ?> le <?php echo $comment_data['date_comment_fr']; ?></p>
+                                <p><?php echo nl2br($comment_data['comment']); ?></p>
                                 <form action="alert_post.php?number=<?php echo $comment_data['id'];?>" method="post">
                                     <input type="submit" value="Signaler">
                                 </form>
@@ -77,7 +77,7 @@
                         } // Laisser un commentaire
                         ?>
                         <h2>Laissez un commentaire</h2>
-                        <form action="comment_post.php?number=<?php echo $_GET['number'];?>" method="post">
+                        <form action="comment_post.php?number=<?php echo htmlspecialchars($_GET['number']);?>" method="post">
                             <p>
                                 <label for="author">Pseudo :</label><br />
                                 <input type="text" id="author" name="author" minlength = "2" maxlength="255" required>

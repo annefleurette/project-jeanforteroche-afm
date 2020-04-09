@@ -27,7 +27,7 @@
                     $reading_pages = ceil(($reading['numberEpisodes'])/3);
                     if (isset($_GET['page']) && ($_GET['page'] > 0))
                     {
-                        $page = $_GET['page'];
+                        $page = htmlspecialchars($_GET['page']);
                     }else{
                         $page = 1;
                     }
@@ -45,9 +45,9 @@
                                 <ul> <!-- On affiche les épisodes -->
                                     <li>
                                         <article>
-                                            <p>Episode n°<?php echo htmlspecialchars($episodes_all['episode_number']); ?> :</p>
-                                            <h1><?php echo htmlspecialchars($episodes_all['episode_title']); ?></h2>
-                                            <a href="episode.php?number=<?php echo htmlspecialchars($episodes_all['episode_number']); ?>" class="btn btn__read">Lire l'épisode</a>
+                                            <p>Episode n°<?php echo $episodes_all['episode_number']; ?> :</p>
+                                            <h1><?php echo $episodes_all['episode_title']; ?></h2>
+                                            <a href="episode.php?number=<?php echo $episodes_all['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
                                         </article>
                                     </li>
                                 </ul>

@@ -32,12 +32,12 @@
             <section id="update-episode">
                 <?php  
                 $req = $bdd->prepare('SELECT episode_number, episode_title, episode_content, episode_status FROM episodes WHERE id = ?');
-                    $req->execute(array($_GET['number']));
+                    $req->execute(array(htmlspecialchars($_GET['id'])));
                     $episode_unitary = $req->fetch();
                 if($episode_unitary['episode_status'] == "published"){ // Si l'épisode est un épisode déjà publié
                 ?>
                 <h1>Modifier l'épisode n°<?php echo $episode_unitary['episode_number']; ?></h1>
-                <form action="update_post.php?number=<?php echo $_GET['number']; ?>" method="post">
+                <form action="update_post.php?id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
                     <p>
                         <label for="title">Titre de l'épisode</label><br />
                         <input type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
@@ -53,7 +53,7 @@
                 <?php
                 } elseif($episode_unitary['episode_status'] == "inprogress") { // Si l'épisode est un épisode seulement enregistré
                 ?>
-                <form action="update_post.php?number=<?php echo $_GET['number']; ?>" method="post">
+                <form action="update_post.php?id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
                     <p>
                         <label for="number">Numéro de l'épisode</label><br />
                         <input type="number" id="number" name="number" min="1" value="<?php echo $episode_unitary['episode_number']; ?>" required>

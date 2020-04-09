@@ -39,13 +39,13 @@ session_start();
                             <ul> <!-- On affiche les épisodes publiés -->
                                 <li>
                                     <article>
-                                        <p>Episode n°<?php echo htmlspecialchars($published_episode['episode_number']); ?> :</p>
-                                        <h3><?php echo htmlspecialchars($published_episode['episode_title']); ?></h3>
+                                        <p>Episode n°<?php echo $published_episode['episode_number']; ?> :</p>
+                                        <h3><?php echo $published_episode['episode_title']; ?></h3>
                                         <ul>
                                             <!-- Lire l'épisode -->
-                                            <li><a href="episode.php?number=<?php echo htmlspecialchars($published_episode['episode_number']); ?>" class="btn btn__admin">Lire</a></li>
+                                            <li><a href="episode.php?number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
                                             <!-- Modifier l'épisode -->
-                                            <li><a href="update.php?number=<?php echo htmlspecialchars($published_episode['id']); ?>" class="btn btn__admin">Modifier</a></li>
+                                            <li><a href="update.php?id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
                                             <!-- Supprimer l'épisode avec demande de confirmation - On ne peut supprimer que le dernier épisode publié -->
                                             <?php
                                             if($published_episode['episode_number'] == $nbepisode_published) {
@@ -66,7 +66,7 @@ session_start();
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                                            <a href="delete_episode.php?number=<?php echo htmlspecialchars($published_episode['id']); ?>" class="btn btn__admin">Confirmer</a>
+                                                            <a href="delete_episode.php?id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Confirmer</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,13 +99,13 @@ session_start();
                             <ul> <!-- On affiche les épisodes en cours -->
                                 <li>
                                     <article>
-                                        <p>Episode n°<?php echo htmlspecialchars($inprogress_episode['episode_number']); ?> :</p>
-                                        <h3><?php echo htmlspecialchars($inprogress_episode['episode_title']); ?></h3>
+                                        <p>Episode n°<?php echo $inprogress_episode['episode_number']; ?> :</p>
+                                        <h3><?php echo $inprogress_episode['episode_title']; ?></h3>
                                         <ul>
                                             <!-- Aperçu de l'épisode -->
-                                            <li><a href="look.php?number=<?php echo htmlspecialchars($inprogress_episode['id']); ?>" class="btn btn__admin">Aperçu</a></li>
+                                            <li><a href="look.php?id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
                                             <!-- Modifier l'épisode -->
-                                            <li><a href="update.php?number=<?php echo htmlspecialchars($inprogress_episode['id']); ?>" class="btn btn__admin">Modifier</a></li>
+                                            <li><a href="update.php?id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
                                             <!-- Supprimer l'épisode avec demande de confirmation -->
                                             <li><button type="button" data-toggle="modal" data-target="#Modal2">Supprimer</button></li>
                                             <!-- Modal -->
@@ -123,7 +123,7 @@ session_start();
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                                            <a href="delete_episode.php?number=<?php echo htmlspecialchars($inprogress_episode['id']); ?>" class="btn btn__admin">Confirmer</a>
+                                                            <a href="delete_episode.php?id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Confirmer</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,11 +150,11 @@ session_start();
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo htmlspecialchars($published_comment['id_episode']); ?>
-                                <p><?php echo htmlspecialchars($published_comment['author']); ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
+                                <p>Episode n°<?php echo $published_comment['id_episode']; ?>
+                                <p><?php echo $published_comment['author']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br(htmlspecialchars($published_comment['comment'])); ?></p>
-                                <a href="delete_comment.php?number=<?php echo htmlspecialchars($published_comment['id']); ?>" class="btn btn__admin">Supprimer</a>
-                                <a href="alert_cancel.php?number=<?php echo htmlspecialchars($published_comment['id']); ?>" class="btn btn__admin">Annuler le signalement</a>
+                                <a href="delete_comment.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Supprimer</a>
+                                <a href="alert_cancel.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Annuler le signalement</a>
                             <?php
                             }
                         }else{
@@ -172,10 +172,10 @@ session_start();
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo htmlspecialchars($published_comment['id_episode']); ?>
-                                <p><?php echo htmlspecialchars($published_comment['author']); ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
-                                <p><?php echo nl2br(htmlspecialchars($published_comment['comment'])); ?></p>
-                                <a href="delete_comment.php?number=<?php echo htmlspecialchars($published_comment['id']); ?>" class="btn btn__admin">Supprimer</a>
+                                <p>Episode n°<?php echo $published_comment['id_episode']; ?>
+                                <p><?php echo $published_comment['author']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
+                                <p><?php echo nl2br($published_comment['comment']); ?></p>
+                                <a href="delete_comment.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Supprimer</a>
                             <?php
                             }
                         }else{
