@@ -18,15 +18,15 @@ catch(Exception $e)
 die('Erreur : '.$e->getMessage());
 }
 $alert_all = $bdd->query('SELECT id FROM comments');
-$list_alert_all = $alert_all->fetchAll();
+$list_alert_all = $alert_all->fetchAll(PDO::FETCH_COLUMN);
 $alert_all->closeCursor();
 $alert_update = "oui";
-$id_comment = intval(htmlspecialchars($_GET['number']));
+$id_comment = intval(htmlspecialchars($_GET['id']));
 if(in_array($id_comment, $list_alert_all)) {
 	$req = $bdd->prepare('UPDATE comments SET alert = :newalert WHERE id = :id');
 	$req->execute(array(
 	'newalert' => $alert_update,
-	'id' => htmlspecialchars($_GET['number'])
+	'id' => htmlspecialchars($_GET['id'])
 	));
 	include("header.php");
 	?>
@@ -35,7 +35,7 @@ if(in_array($id_comment, $list_alert_all)) {
 	<?php
 	include("footer.php");
 }else{
-	header('Location: 404error.php');
+	//header('Location: 404error.php');
 }
 ?>
 </body>

@@ -65,7 +65,7 @@
                                 ?>
                                 <p><?php echo $comment_data['author']; ?> le <?php echo $comment_data['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br($comment_data['comment']); ?></p>
-                                <form action="alert_post.php?number=<?php echo $comment_data['id'];?>" method="post">
+                                <form action="alert_post.php?id=<?php echo $comment_data['id'];?>" method="post">
                                     <input type="submit" value="Signaler">
                                 </form>
                                 <?php
