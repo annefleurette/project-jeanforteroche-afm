@@ -143,18 +143,18 @@ session_start();
                 <h2>Gestion des commentaires</h2>
                 <h3>Commentaires signalés</h3>
                 <?php // Récupération de tous les commentaires
-                        $comment = $bdd->query('SELECT id, id_episode, author, comment, DATE_FORMAT(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM comments WHERE alert = "oui" ORDER BY date_comment');
+                        $comment = $bdd->query('SELECT c.id id_comments, c.id_episode id_episode_comments, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c WHERE c.alert = "oui" ORDER BY c.date_comment');
                         $published_comments = $comment->fetchAll();
                         $comment->closeCursor();
                         $nbcomment_published = count($published_comments);
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo $published_comment['id_episode']; ?>
-                                <p><?php echo $published_comment['author']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
-                                <p><?php echo nl2br(htmlspecialchars($published_comment['comment'])); ?></p>
-                                <a href="delete_comment.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Supprimer</a>
-                                <a href="alert_cancel.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Annuler le signalement</a>
+                                <p>Episode n°<?php echo $published_comment['id_episode_comments']; ?>
+                                <p><?php echo $published_comment['pseudo_members']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
+                                <p><?php echo nl2br(htmlspecialchars($published_comment['comment_comments'])); ?></p>
+                                <a href="delete_comment.php?id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__admin">Supprimer</a>
+                                <a href="alert_cancel.php?id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__admin">Annuler le signalement</a>
                             <?php
                             }
                         }else{
@@ -165,17 +165,17 @@ session_start();
                 ?>
                 <h3>Tous les commentaires</h3>
                 <?php // Récupération de tous les commentaires
-                        $comment = $bdd->query('SELECT id, id_episode, author, comment, DATE_FORMAT(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr, alert FROM comments ORDER BY date_comment');
+                        $comment = $bdd->query('SELECT c.id id_comments, c.id_episode id_episode_comments, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c ORDER BY c.date_comment');
                         $published_comments = $comment->fetchAll();
                         $comment->closeCursor();
                         $nbcomment_published = count($published_comments);
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo $published_comment['id_episode']; ?>
-                                <p><?php echo $published_comment['author']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
-                                <p><?php echo nl2br($published_comment['comment']); ?></p>
-                                <a href="delete_comment.php?id=<?php echo $published_comment['id']; ?>" class="btn btn__admin">Supprimer</a>
+                                <p>Episode n°<?php echo $published_comment['id_episode_comments']; ?>
+                                <p><?php echo $published_comment['pseudo_members']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
+                                <p><?php echo nl2br($published_comment['comment_comments']); ?></p>
+                                <a href="delete_comment.php?id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__admin">Supprimer</a>
                             <?php
                             }
                         }else{
@@ -191,4 +191,4 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
-</hmtl>
+</html>

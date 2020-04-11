@@ -46,6 +46,13 @@ session_start();
                         <a href="login.php">Connectez-vous</a>
                         <?php
                         include("footer.php");
+                        //Envoi d'un email de confirmation
+                            // Le message
+                                $message = "Merci, votre inscription au blog de Jean Forteroche est bien confirmée !\r\nPour se connecter : www.jeanforteroche.com";
+                            // Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
+                                $message = wordwrap($message, 70, "\r\n");
+                            // Envoi du mail
+                            mail($_POST['email'], 'Confirmation d\'inscription', $message);
                     }else{
                         include("header.php");
                         ?>

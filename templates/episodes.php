@@ -9,7 +9,13 @@
     </head>
     <body>
         <div class="container">
-            <?php include("header.php");?>
+            <?php include("header.php");
+            if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
+            ?>
+            <p>Bonjour <?php echo $_SESSION['pseudo']; ?>, content de vous revoir !</p>
+            <?php
+            }
+            ?>
             <section id="novel-episodes">
                 <?php
                     // Connexion à la base de données
