@@ -143,14 +143,14 @@ session_start();
                 <h2>Gestion des commentaires</h2>
                 <h3>Commentaires signalés</h3>
                 <?php // Récupération de tous les commentaires
-                        $comment = $bdd->query('SELECT c.id id_comments, c.id_episode id_episode_comments, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c WHERE c.alert = "oui" ORDER BY c.date_comment');
+                        $comment = $bdd->query('SELECT c.id id_comments, e.episode_number episod_number_episodes, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c ON c.id_pseudo = m.id INNER JOIN episodes e  ON c.id_episode = e.id WHERE c.alert = "oui" ORDER BY c.date_comment');
                         $published_comments = $comment->fetchAll();
                         $comment->closeCursor();
                         $nbcomment_published = count($published_comments);
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo $published_comment['id_episode_comments']; ?>
+                                <p>Episode n°<?php echo $published_comment['episod_number_episodes']; ?>
                                 <p><?php echo $published_comment['pseudo_members']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br(htmlspecialchars($published_comment['comment_comments'])); ?></p>
                                 <a href="delete_comment.php?id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__admin">Supprimer</a>
@@ -165,14 +165,14 @@ session_start();
                 ?>
                 <h3>Tous les commentaires</h3>
                 <?php // Récupération de tous les commentaires
-                        $comment = $bdd->query('SELECT c.id id_comments, c.id_episode id_episode_comments, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c ORDER BY c.date_comment');
+                        $comment = $bdd->query('SELECT c.id id_comments, e.episode_number episod_number_episodes, m.pseudo pseudo_members, c.comment comment_comments, DATE_FORMAT(c.date_comment, \'%d/%m/%Y à %Hh%imin%ss\') AS date_comment_fr FROM members m INNER JOIN comments c ON c.id_pseudo = m.id INNER JOIN episodes e  ON c.id_episode = e.id ORDER BY c.date_comment');
                         $published_comments = $comment->fetchAll();
                         $comment->closeCursor();
                         $nbcomment_published = count($published_comments);
                         if($nbcomment_published > 0) {
                             foreach ($published_comments as $published_comment){
                                 ?>
-                                <p>Episode n°<?php echo $published_comment['id_episode_comments']; ?>
+                                <p>Episode n°<?php echo $published_comment['episod_number_episodes']; ?>
                                 <p><?php echo $published_comment['pseudo_members']; ?> le <?php echo $published_comment['date_comment_fr']; ?></p>
                                 <p><?php echo nl2br($published_comment['comment_comments']); ?></p>
                                 <a href="delete_comment.php?id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__admin">Supprimer</a>
