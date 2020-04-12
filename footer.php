@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    <a href="unsubscribe.php" class="btn btn__admin">Confirmer</a>
+                    <a href="unsubscribe.php?pseudo=<?php echo $_SESSION['pseudo']; ?>" class="btn btn__admin">Confirmer</a>
                 </div>
             </div>
         </div>

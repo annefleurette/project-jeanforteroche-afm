@@ -33,7 +33,7 @@ session_start();
             $_POST['email'] = htmlspecialchars($_POST['email']);
             $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
             // Si le pseudo est bien nouveau
-            if(!in_array($_POST['pseudo'], $look_all_pseudo) OR !in_array($_POST['email'], $look_all_email)) {
+            if(!in_array(strtolower($_POST['pseudo']), $look_all_pseudo) AND !in_array($_POST['email'], $look_all_email)) {
                 // Si l'adresse email possède bien le bon format
                 if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,}$#", $_POST['email'])) {
                     //Si le mot de passe correspond bien à sa vérification
@@ -63,16 +63,20 @@ session_start();
                         include("footer.php");
                     }
                 }else{
+                    include("header.php");
                     ?>
                     <p>Il y a une erreur dans l'adresse email</p>
                     <a href="subscription.php">Retour</a>
                     <?php
+                    include("footer.php");
                 }
             }else{
+                include("header.php");
                 ?>
                 <p>Ce pseudo ou cet email est déjà utilisé</p>
                 <a href="subscription.php">Retour</a>
                 <?php
+                include("footer.php");
             }
         }
         ?>
