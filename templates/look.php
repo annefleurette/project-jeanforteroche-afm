@@ -23,7 +23,7 @@
                 }
                 // On récupère l'épisode'
                 $getepisode = $bdd->prepare('SELECT episode_number, episode_title, episode_content FROM episodes WHERE id = ?');
-                $getepisode ->execute(array($_GET['number']));
+                $getepisode ->execute(array(htmlspecialchars($_GET['id'])));
                 $lookepisode = $getepisode->fetch();
                 if (!empty($lookepisode)){
                     ?>

@@ -27,6 +27,13 @@
                     $_SESSION = array();
 					session_destroy();
 					header('Location: index.php');
+                    //Envoi d'un email de confirmation
+                            // Le message
+                                $message = "Merci, nous vous confirmons votre désinscription au blog de Jean Forteroche\r\nDans l'espoir de vous revoir : www.jeanforteroche.com";
+                            // Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
+                                $message = wordwrap($message, 70, "\r\n");
+                            // Envoi du mail
+                            mail($_POST['email'], 'Confirmation de désinscription', $message);
                 ?>
             </section>
         </div>  
