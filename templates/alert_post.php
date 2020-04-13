@@ -22,19 +22,26 @@ $alert_all = $bdd->query('SELECT id FROM comments');
 $list_alert_all = $alert_all->fetchAll(PDO::FETCH_COLUMN);
 $alert_all->closeCursor();
 $alert_update = "oui";
+$_GET['id'] = htmlspecialchars($_GET['id']);
 $id_comment = intval(htmlspecialchars($_GET['id']));
 if(in_array($id_comment, $list_alert_all)) {
 	$req = $bdd->prepare('UPDATE comments SET alert = :newalert WHERE id = :id');
 	$req->execute(array(
 	'newalert' => $alert_update,
-	'id' => htmlspecialchars($_GET['id'])
+	'id' => $_GET['id']
 	));
 	include("header.php");
 	?>
 	<p>Le commentaire a été signalé à l'administration</p>
-	<a href="episode.php">Retour</a>
+	<?php
+	$back_episode = $bdd->prepare('SELECT e.episode_number number_episode_episodes FROM episodes e INNER JOIN comments c ON c.id_episode = e.id WHERE c.id = ?');
+	$back_episode->execute(array($_GET['id']));
+	$exe_back_episode = $back_episode->fetch();
+	?>
+	<a href="episode.php?number=<?php echo $exe_back_episode['number_episode_episodes'];?>">Retour</a>
 	<?php
 	include("footer.php");
+	$back_episode->closeCursor();
 }else{
 	//header('Location: 404error.php');
 }

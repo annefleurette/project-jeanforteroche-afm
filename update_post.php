@@ -30,11 +30,10 @@ session_start();
                     $episode_published = $count->fetch();
                     $count_episode_published = intval($episode_published['numberEpisodesPublished']);
                     $count_episode_publishable = $count_episode_published + 1;
-                    if(isset($_POST['save'])) { // Si le bouton Enregistrer est choisi
+                    if(isset($_POST['save'])){   // Si le bouton Enregistrer est choisi
                         // Enregistrement de l'épisode à modifier dans la base de données
                         // Si les données ont bien été saisies
-                        if (isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))
-                        {
+                        if (isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content'])){
                             //Si le numéro d'épisode n'existe pas déjà parmi les épisodes publiés
                             $look = $bdd->prepare('SELECT * FROM episodes WHERE episode_number = ? AND episode_status="published"');
                             $look->execute(array($_POST['number']));
@@ -42,6 +41,7 @@ session_start();
                             $status_progress = "inprogress";
                             $_POST['number'] = htmlspecialchars($_POST['number']);
                             $_POST['title'] = htmlspecialchars($_POST['title']);
+                            $_POST['content'] = htmlspecialchars($_POST['content']);
                             if (empty($episode_result)){
                                 $req = $bdd->prepare('UPDATE episodes SET episode_number = :newnumber, episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
                                 $req->execute(array(
@@ -53,58 +53,55 @@ session_start();
                                 ));  
                                 header('Location: admin.php');
                             } else {
-                                    ?>
-                                    <p>Vous avez déjà publié ce numéro d'épisode !</p>
-                                    <a href="admin.php">Recommencer</a>
-                                    <?php
+                                ?>
+                                <p>Vous avez déjà publié ce numéro d'épisode !</p>
+                                <a href="admin.php">Recommencer</a>
+                                <?php
                             }
                             $look->closeCursor();
                         }
                     } else { // Si le bouton Publier est choisi
                         // Enregistrement de l'épisode à publier dans la base de données
                         // Si les données ont bien été saisies
-                        if (isset($_POST['title']) AND isset($_POST['content']))
+                        if (isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))
                         {
-                            $status_published = "published";
-                            $look = $bdd->prepare('SELECT * FROM episodes WHERE id = ?');
-                            $look->execute(array(htmlspecialchars($_GET['id'])));
+                            // Si le numéro d'épisode n'existe pas déjà parmi les épisodes publiés et si ce numéro est bien le +1 du dernier épisode publié
+                            $look = $bdd->prepare('SELECT * FROM episodes WHERE episode_number = ? AND episode_status="published"');
+                            $look->execute(array($_POST['number']));
+                            $current_episode = intval($_POST['number']);
                             $episode_result = $look->fetch();
-                            if($episode_result['episode_status'] == $status_published) {
-                                $req_publish_already = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
-                                $req_publish_already->execute(array(
+                            $_POST['number'] = htmlspecialchars($_POST['number']);
+                            $_POST['title'] = htmlspecialchars($_POST['title']);
+                            $_POST['content'] = htmlspecialchars($_POST['content']);
+                            $status_published = "published";
+                            if (empty($episode_result) AND ($current_episode == $count_episode_publishable)){
+                                $req_publish_new = $bdd->prepare('UPDATE episodes SET episode_number = :newnumber, episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
+                                $req_publish_new->execute(array(
+                                'newnumber' => $_POST['number'],
                                 'newtitle' => $_POST['title'],
                                 'newcontent' => $_POST['content'],
                                 'newstatus' => $status_published,
                                 'id' => htmlspecialchars($_GET['id'])
-                                ));
-                                header('Location: admin.php');
-                            }else{
-                            // Si le numéro d'épisode n'existe pas déjà parmi les épisodes publiés et si ce numéro est bien le +1 du dernier épisode publié
-                                $look_current = $bdd->prepare('SELECT episode_number FROM episodes WHERE id = ?'); 
-                                $look_current->execute(array(htmlspecialchars($_GET['id'])));
-                                $look_current_value = $look_current->fetch();
-                                $current_episode = intval($look_current_value);
-                                $_POST['title'] = htmlspecialchars($_POST['title']);
-    					        if ($current_episode == $count_episode_publishable){
-                                    $req_publish_new = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent, episode_status = :newstatus WHERE id = :id');
-                                    $req_publish_new->execute(array(
-                                    'newtitle' => $_POST['title'],
-                                    'newcontent' => $_POST['content'],
-                                    'newstatus' => $status_published,
-                                    'id' => htmlspecialchars($_GET['id'])
                                     ));
-                                    header('Location: admin.php');
-                                }else{
-                                    //?>
-                                    <p>Vous ne pouvez publier que l'épisode suivant du dernier épisode publié</p>
-                                    <a href="admin.php">Recommencer</a>
-                                    <?php
-                                }
+                                header('Location: admin.php');
+                            } else {
+                                ?>
+                                <p>Vous avez déjà publié ce numéro d'épisode ou cet épisode n'est pas le suivant du dernier épisode publié !</p>
+                                <a href="admin.php">Recommencer</a>
+                                <?php
                             }
-                        }
-                        $look_current->closeCursor();
-                        $count->closeCursor();
+                        }elseif(!isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content'])){
+                            // Actualisation simple du contenu
+                            $req_publish_already = $bdd->prepare('UPDATE episodes SET episode_title = :newtitle, episode_content = :newcontent WHERE id = :id');
+                            $req_publish_already->execute(array(
+                            'newtitle' => $_POST['title'],
+                            'newcontent' => $_POST['content'],
+                            'id' => htmlspecialchars($_GET['id'])
+                            ));
+                            header('Location: admin.php');
+                        }      
                     }
+                        $count->closeCursor();
                 ?>
             </section>
         </div> 
