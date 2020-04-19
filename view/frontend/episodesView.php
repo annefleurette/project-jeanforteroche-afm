@@ -9,6 +9,7 @@ if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
 }
 ?>
 <section id="novel-episodes"> <!-- Section qui affiche tous les épisodes -->
+    <h1>Billet simple pour l'Alaska</h1>
     <?php
     if($nbepisode_all > 0) { // Si des épisodes publiés existent bien
     ?>

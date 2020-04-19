@@ -1,10 +1,15 @@
 <?php
+session_start();
 require('controller/frontend.php');
+require('controller/backend.php');
 try {
-	if(isset($_GET['action'])){
-		switch($_GET['action']){
+	if(isset($_GET['action']))
+	{
+		switch($_GET['action'])
+		{
 			case 'episode':
-				if(isset($_GET['number'])){
+				if(isset($_GET['number']))
+				{
 					displayEpisodeUnitary();
 				}else{
 					displayEpisodesList();
@@ -30,6 +35,28 @@ try {
 				break;
 			case 'unsubscribe':
 				unsubscribe();
+				break;
+			case 'admin':
+				if(isset($_SESSION['pseudo']) AND ($_SESSION['type'] == "admin"))
+				{
+					displayAdmin();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;
+			case 'write':
+				writeEpisode();
+				break;
+			case 'write_post':
+				writeEpisodePost();
+				break;
+			case 'delete_episode':
+				if(isset($_GET['id']))
+				{
+					deleteEpisodePost();
+				}else{
+					throw new Exception('Erreur');
+				}
 				break;
 		}
 	}else{

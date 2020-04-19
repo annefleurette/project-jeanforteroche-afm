@@ -1,5 +1,6 @@
 <?php
-require('./model/frontend.php');
+
+require('./model/model.php');
 
 function displayEpisodesNews()
 {
@@ -52,8 +53,10 @@ function displayEpisodeUnitary()
 
 function addComment()
 {
-	if(isset($_SESSION['pseudo'])) { // Si l'utilisateur est bien connecté
-        if (isset($_POST['comment'])){ // Si le commentaire existe bien
+	if(isset($_SESSION['pseudo']))
+    { // Si l'utilisateur est bien connecté
+        if (isset($_POST['comment']))
+        { // Si le commentaire existe bien
             $_GET['number'] = htmlspecialchars($_GET['number']);
             $_POST['comment'] = htmlspecialchars($_POST['comment']);
             // On récupère l'id d'un pseudo de membre
@@ -63,9 +66,9 @@ function addComment()
             // On enregistre le commentaire dans la base de données
             $newcomment = postComment($exe_idepisode, $exe_idpseudo, $_POST['comment']);
             header('Location: index.php?action=episode&amp;number=' . $_GET['number']);
-            }else{
-            	header('Location: index.php?action=episode&amp;number=' . $_GET['number']);
-            }   
+        }else{
+            header('Location: index.php?action=episode&amp;number=' . $_GET['number']);
+        }   
    	}else{ // Sinon renvoi vers la pages Inscription/Connexion
         header('Location: index.php?action=subscription');
     }
@@ -143,8 +146,8 @@ function loginPost()
                 session_start();
                 $_SESSION['pseudo'] = $info_member['pseudo'];
                 $_SESSION['type'] = $info_member['type'];
-                setcookie(htmlspecialchars($_POST['email']), time()+365*24*3600, null, null, false, true);
-                setcookie(htmlspecialchars(password_verify($_POST['password'], $resultat['password'])), time()+365*24*3600, null, null, false, true);
+                setcookie($_POST['email'], time()+365*24*3600, null, null, false, true);
+                setcookie(password_verify($_POST['password'], $resultat['password']), time()+365*24*3600, null, null, false, true);
                 if($info_member['type'] == "admin")
                 { // Si le membre est admin
                     header('Location: index.php?action=admin'); 
