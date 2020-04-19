@@ -3,8 +3,8 @@ $head_title = 'Billet simple pour l\'Alaska - Inscription';
 $head_description = 'Inscription au blog Billet simple pour l\'Alaska de Jean Forteroche.';
 ob_start();
 ?>
-<h1>Inscription</h1>
 <section id="subscription">
+    <h1>Inscription</h1>
     <?php
     if(!isset($_SESSION['pseudo'])) { //On vérifie que la personne n'est pas déjà connectée 
     ?>
@@ -33,7 +33,7 @@ ob_start();
     <?php
     }else{
     ?>
-        <p>Vous êtes déjà inscrit et connecté !
+        <p>Vous êtes déjà inscrit(e) et connecté(e) !
     <?php
     }
     ?>

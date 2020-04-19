@@ -61,7 +61,7 @@ if (!empty($episode_unitary)) {
         <?php
         }
         ?>
-        <form action="comment_post.php?number=<?php echo htmlspecialchars($_GET['number']);?>" method="post">
+        <form action="index.php?action=comment_post&amp;number=<?php echo htmlspecialchars($_GET['number']);?>" method="post">
             <p>
                 <label for="comment">Commentaire :</label><br />
                 <textarea id="comment" name="comment" rows="5" cols="33" minlength = "4" required></textarea>

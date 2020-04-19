@@ -1,4 +1,69 @@
 <?php
+
+// Requêtes table MEMBERS
+
+// On récupère l'id d'un pseudo de membre
+function getMemberId($pseudo)
+{
+	$db = dbConnect();
+	$req_idpseudo = $db->prepare('SELECT id FROM members WHERE pseudo = ?');
+    $req_idpseudo->execute(array($pseudo));
+    $exe_idpseudo = $req_idpseudo->fetch(PDO::FETCH_COLUMN);
+    $req_idpseudo->closeCursor();
+    return $exe_idpseudo;
+}
+
+// On récupère tous les pseudos des membres inscrits
+function getMembersPseudo()
+{
+	$db = dbConnect();
+	$req_pseudos = $db->query('SELECT pseudo FROM members');
+    $exe_pseudos = $req_pseudos->fetchAll(PDO::FETCH_COLUMN);
+    $req_pseudos->closeCursor();
+    return $exe_pseudos;
+}
+
+// On récupère tous les emails des membres inscrits
+function getMembersEmail()
+{
+	$db = dbConnect();
+	$req_emails = $db->query('SELECT email FROM members');
+    $exe_emails = $req_emails->fetchAll(PDO::FETCH_COLUMN);
+    $req_emails->closeCursor();
+    return $exe_emails;
+}
+
+// On récupère les informations de membre qui correspondent à l'email saisi
+function getMemberInfo($email)
+{
+	$db = dbConnect();
+	$req_member = $db->prepare('SELECT pseudo, password, type FROM members WHERE email = ?');
+    $req_member->execute(array($email));
+    $info_member = $req_member->fetch();
+    $req_member->closeCursor();
+    return $info_member;
+}
+
+// On enregistre un nouveau membre dans la base de données
+function addMember($pseudo, $password, $email)
+{
+	$db = dbConnect();
+	$newmember = $db->prepare('INSERT INTO members (pseudo, password, email, date_subscription, type) VALUES(?, ?, ?, CURDATE(), \'reader\')');
+    $newmember->execute(array($pseudo, $password, $email));
+    return $newmember;
+}
+
+// On supprime un membre de la base de données
+function deleteMember($pseudo)
+{
+	$db = dbConnect();
+	$delete_member = $db->prepare('DELETE FROM members WHERE pseudo = ?');
+    $delete_member->execute(array($pseudo));
+    return $delete_member;
+}
+
+// Requêtes table EPISODES
+
 //On récupère le premier épisode publié
 function getEpisodeFirst()
 {
@@ -61,6 +126,18 @@ function getEpisodeId($number)
     return $exe_idepisode;
 }
 
+// Requêtes table COMMENTS
+
+// On enregistre le commentaire dans la base de données
+function postComment($idepisode, $idpseudo, $comment) {
+	$db = dbConnect();
+	$newcomment = $db->prepare('INSERT INTO comments (id_episode, id_pseudo, comment, date_comment) VALUES(?, ?, ?, NOW())');
+    $newcomment->execute(array($idepisode, $idpseudo, $comment));
+    return $newcomment;
+}
+
+// Requêtes tables jointes
+
 // On récupère les commentaires d'un épisode
 function getEpisodeComment($id)
 {
@@ -72,21 +149,12 @@ function getEpisodeComment($id)
     return $comments;
 }
 
-// On récupère les informations de membre qui correspondent à l'email saisi
-function getMemberInfo($email)
-{
-	$db = dbConnect();
-	$req_member = $db->prepare('SELECT pseudo, password, type FROM members WHERE email = ?');
-    $req_member->execute(array($email));
-    $info_member = $req_member->fetch();
-    $req_member->closeCursor();
-    return $info_member;
-}
+//Récupération de la la base de donnnées
 
-//On récupère la base de donnnées
 function dbConnect()
 {
 	$db = new PDO('mysql:host=localhost;dbname=novel;charset=utf8', 'root', 'root');
 	return $db;
 }
+
 ?>

@@ -10,11 +10,26 @@ try {
 					displayEpisodesList();
 				}
 				break;
+			case 'comment_post':
+				addComment();
+				break;
 			case 'subscription':
 				subscription();
 				break;
+			case 'subscription_post':
+				subscriptionPost();
+				break;
 			case 'login':
 				login();
+				break;
+			case 'login_post':
+				loginPost();
+				break;
+			case 'logout':
+				logout();
+				break;
+			case 'unsubscribe':
+				unsubscribe();
 				break;
 		}
 	}else{
