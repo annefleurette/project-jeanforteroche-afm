@@ -1,21 +1,30 @@
 <?php
 
-require('./model/model.php');
+// Chargement des classes
+require_once('model/MemberManager.php');
+require_once('model/EpisodeManager.php');
+require_once('model/CommentManager.php');
+
+use AnneFleurMarchat\JeanForteroche\Model\MemberManager;
+use AnneFleurMarchat\JeanForteroche\Model\EpisodeManager;
+use AnneFleurMarchat\JeanForteroche\Model\CommentManager;
 
 function displayEpisodesNews()
 {
-	// On récupère le premier épisode de la série qui a été publié
-	$req_first = getEpisodeFirst();
+	$episodeManager = new EpisodeManager();
+    // On récupère le premier épisode de la série qui a été publié
+	$req_first = $episodeManager->getEpisodeFirst();
 	// On récupère les 3 derniers épisodes publiés
-	$episode_three = getEpisodesLastThree();        
+	$episode_three = $episodeManager->getEpisodesLastThree();        
 	$nbepisode_three = count($episode_three);
 	require('./view/frontend/indexView.php');
 }
 
 function displayEpisodesList()
 {
+    $episodeManager = new EpisodeManager();
 	// On compte le nombre d'épisodes et on en répartit 3 par page
-	$nbepisodes = countEpisodesPublished();
+	$nbepisodes = $episodeManager->countEpisodesPublished();
 	if($nbepisodes != 0)
 	{
 		$reading_pages = ceil(($nbepisodes)/3);
@@ -30,7 +39,7 @@ function displayEpisodesList()
 			$page = $reading_pages;
 		}
 		// On récupère 3 épisodes publiés par page
-		$episode_all = getEpisodesPublishedPagination($page);
+		$episode_all = $episodeManager->getEpisodesPublishedPagination($page);
 		$nbepisode_all = count($episode_all);
 	
 	}
@@ -39,18 +48,20 @@ function displayEpisodesList()
 
 function displayEpisodeUnitary()
 {
-	$_GET['number'] = htmlspecialchars($_GET['number']);
+	$episodeManager = new EpisodeManager();
+    $commentManager = new CommentManager();
+    $_GET['number'] = htmlspecialchars($_GET['number']);
 	// On récupère l'épisode unitaire souhaité
-	$episode_unitary_published = getEpisodePublished($_GET['number']);
+	$episode_unitary_published = $episodeManager->getEpisodePublished($_GET['number']);
 	// On compe le nombre d'épisodes pour établir épisodes précédents/suivants
-	$nbepisodes = countEpisodesPublished();
+	$nbepisodes = $episodeManager->countEpisodesPublished();
 	$reading_pages = $nbepisodes;
     $episode_current = intval($_GET['number']);
 	$episode_before = $episode_current - 1;
     $episode_next = $episode_current + 1;
     // On affiche les commentaires de l'épisode
-    $exe_idepisode = getEpisodeId($_GET['number']);
-    $comments = getEpisodeComment($exe_idepisode);
+    $exe_idepisode = $episodeManager->getEpisodeId($_GET['number']);
+    $comments = $commentManager->getEpisodeComment($exe_idepisode);
     // On compte le nombre de commentaires
     $nbcomments = count($comments);
     require('./view/frontend/episodeView.php');
@@ -58,6 +69,9 @@ function displayEpisodeUnitary()
 
 function addComment()
 {
+    $commentManager = new CommentManager();
+    $memberManager = new MemberManager();
+    $episodeManager = new EpisodeManager();
 	if(isset($_SESSION['pseudo']))
     { // Si l'utilisateur est bien connecté
         if (isset($_POST['comment']))
@@ -65,11 +79,11 @@ function addComment()
             $_GET['number'] = htmlspecialchars($_GET['number']);
             $_POST['comment'] = htmlspecialchars($_POST['comment']);
             // On récupère l'id d'un pseudo de membre
-            $exe_idpseudo = getMemberId($_SESSION['pseudo']);
+            $exe_idpseudo = $memberManager->getMemberId($_SESSION['pseudo']);
             // On récupère l'id d'une épisode donné
-            $exe_idepisode = getEpisodeId($_GET['number']);
+            $exe_idepisode = $episodeManager->getEpisodeId($_GET['number']);
             // On enregistre le commentaire dans la base de données
-            $newcomment = postComment($exe_idepisode, $exe_idpseudo, $_POST['comment']);
+            $newcomment = $commentManager->postComment($exe_idepisode, $exe_idpseudo, $_POST['comment']);
             header('Location: index.php?action=episode&amp;number=' . $_GET['number']);
         }else{
             header('Location: index.php?action=episode&amp;number=' . $_GET['number']);
@@ -86,12 +100,13 @@ function subscription()
 
 function subscriptionPost()
 {
+    $memberManager = new MemberManager();
 	if (isset($_POST['pseudo']) AND isset($_POST['email']) AND isset($_POST['password']) AND isset($_POST['password2']))
 	{
 		// On récupère tous les pseudos des membres inscrits
-		$exe_pseudos = getMembersPseudo();
+		$exe_pseudos = $memberManager->getMembersPseudo();
         // On récupère tous les emails des membres inscrits
-        $exe_emails = getMembersEmail();
+        $exe_emails = $memberManager->getMembersEmail();
         $_POST['email'] = htmlspecialchars($_POST['email']);
         $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
         $_POST['password'] = htmlspecialchars($_POST['password']);
@@ -105,7 +120,7 @@ function subscriptionPost()
         	//Si le mot de passe correspond bien à sa vérification
         		if($_POST['password'] == $_POST['password2']) {
         		$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        		$newmember = addMember($_POST['pseudo'], $pass_hache, $_POST['email']);
+        		$newmember = $memberManager->addMember($_POST['pseudo'], $pass_hache, $_POST['email']);
 				header('Location: index.php?action=login');
                 //Envoi d'un email de confirmation
                     // Le message
@@ -135,12 +150,13 @@ function login()
 
 function loginPost()
 {
+    $memberManager = new MemberManager();
 	if (isset($_POST['email']) AND (isset($_POST['password'])))
 	{
 		$_POST['email'] = htmlspecialchars($_POST['email']);
 		$_POST['password'] = htmlspecialchars($_POST['password']);
 		// On récupère les informations de membre qui correspondent à l'email saisi
-		$info_member = getMemberInfo($_POST['email']);
+		$info_member = $memberManager->getMemberInfo($_POST['email']);
         $isPasswordCorrect = password_verify($_POST['password'], $info_member['password']);
         if(!$info_member)
         {
@@ -178,11 +194,12 @@ function logout()
 
 function unsubscribe()
 {
-	session_start();
+	$memberManager = new MemberManager();
+    session_start();
 	if(isset($_SESSION['pseudo']))
 	{
 		// On supprime un membre de la base de données
-		$delete_member = deleteMemberDb($_SESSION['pseudo']);
+		$delete_member = $memberManager->deleteMemberDb($_SESSION['pseudo']);
         $_SESSION = array();
 		session_destroy();
 		header('Location: index.php');
