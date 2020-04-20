@@ -16,19 +16,24 @@ function displayEpisodesList()
 {
 	// On compte le nombre d'épisodes et on en répartit 3 par page
 	$nbepisodes = countEpisodesPublished();
-	$reading_pages = ceil(($nbepisodes['numberEpisodes'])/3);
-	if (isset($_GET['page']) && ($_GET['page'] > 0))
+	if($nbepisodes != 0)
 	{
-	    $page = htmlspecialchars($_GET['page']);
-	}else{
-	    $page = 1;
+		$reading_pages = ceil(($nbepisodes)/3);
+		if (isset($_GET['page']) && ($_GET['page'] > 0))
+		{
+			$page = htmlspecialchars($_GET['page']);
+		}else{
+			$page = 1;
+		}
+		if ($page > $reading_pages)
+		{
+			$page = $reading_pages;
+		}
+		// On récupère 3 épisodes publiés par page
+		$episode_all = getEpisodesPublishedPagination($page);
+		$nbepisode_all = count($episode_all);
+	
 	}
-	if ($page > $reading_pages) {
-	    $page = $reading_pages;
-	}
-	// On récupère 3 épisodes publiés par page
-	$episode_all = getEpisodesPublishedPagination($page);
-	$nbepisode_all = count($episode_all);
 	require('./view/frontend/episodesView.php');
 }
 
@@ -36,10 +41,10 @@ function displayEpisodeUnitary()
 {
 	$_GET['number'] = htmlspecialchars($_GET['number']);
 	// On récupère l'épisode unitaire souhaité
-	$episode_unitary = getEpisode($_GET['number']);
+	$episode_unitary_published = getEpisodePublished($_GET['number']);
 	// On compe le nombre d'épisodes pour établir épisodes précédents/suivants
 	$nbepisodes = countEpisodesPublished();
-	$reading_pages = $nbepisodes['numberEpisodes'];
+	$reading_pages = $nbepisodes;
     $episode_current = intval($_GET['number']);
 	$episode_before = $episode_current - 1;
     $episode_next = $episode_current + 1;
@@ -177,7 +182,7 @@ function unsubscribe()
 	if(isset($_SESSION['pseudo']))
 	{
 		// On supprime un membre de la base de données
-		$delete_member = deleteMember($_SESSION['pseudo']);
+		$delete_member = deleteMemberDb($_SESSION['pseudo']);
         $_SESSION = array();
 		session_destroy();
 		header('Location: index.php');

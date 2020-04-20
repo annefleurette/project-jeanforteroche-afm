@@ -25,7 +25,7 @@ ob_start();
 	                        <!-- Lire l'épisode -->
 	                        <li><a href="index.php?action=episode&amp;number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
 	                        <!-- Modifier l'épisode -->
-	                        <li><a href="index.php?action=update&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
+	                        <li><a href="index.php?action=update_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
 	                        <!-- Supprimer l'épisode avec demande de confirmation - On ne peut supprimer que le dernier épisode publié -->
 	                        <?php
 	                        if($published_episode['episode_number'] == $nbepisode_published)
@@ -87,9 +87,9 @@ ob_start();
 	                    <h3><?php echo $inprogress_episode['episode_title']; ?></h3>
 	                    <ul>
 	                        <!-- Aperçu de l'épisode -->
-	                        <li><a href="index.php?action=look&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
+	                        <li><a href="index.php?action=look_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
 	                        <!-- Modifier l'épisode -->
-	                        <li><a href="index.php?action=update&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
+	                        <li><a href="index.php?action=update_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
 	                        <!-- Supprimer l'épisode avec demande de confirmation -->
 	                        <li><button type="button" data-toggle="modal" data-target="#Modal2">Supprimer</button></li>
 	                            <!-- Modal -->
@@ -133,13 +133,13 @@ ob_start();
 	<section id="admin-comments-alert" class="backoffice-block"> <!-- Section qui liste les commentaires signalés -->
 		<h3>Commentaires signalés</h3>
 		<?php
-        if($nbcomment_alert > 0)
+        if($nbcomment_published > 0)
         {
             foreach ($alert_comments as $alert_comment)
             {
             ?>
                 <p>Episode n°<?php echo $alert_comment['episod_number_episodes']; ?>
-                <p><?php echo $published_comment['pseudo_members']; ?> le <?php echo $alert_comment['date_comment_fr']; ?></p>
+                <p><?php echo $alert_comment['pseudo_members']; ?> le <?php echo $alert_comment['date_comment_fr']; ?></p>
                 <p><?php echo nl2br(htmlspecialchars($alert_comment['comment_comments'])); ?></p>
                 <a href="index.php?action=delete_comment&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__admin">Supprimer</a>
                 <a href="index.php?action=alert_cancel&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__admin">Annuler le signalement</a>

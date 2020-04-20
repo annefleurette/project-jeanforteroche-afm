@@ -53,11 +53,54 @@ try {
 			case 'delete_episode':
 				if(isset($_GET['id']))
 				{
-					deleteEpisodePost();
+					deleteEpisode();
 				}else{
 					throw new Exception('Erreur');
 				}
 				break;
+			case 'update_episode':
+				if(isset($_GET['id']))
+				{
+					updateEpisode();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;
+			case 'update_post':
+				updateEpisodePost();
+				break;
+			case 'look_episode':
+				if(isset($_GET['id']))
+				{
+					lookEpisode();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;
+			case 'alert_post':
+				if(isset($_GET['id']))
+				{
+					alertCommentPost();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;
+			case 'alert_cancel':
+				if(isset($_GET['id']))
+				{
+					alertCommentCancel();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;
+			case 'delete_comment':
+				if(isset($_GET['id']))
+				{
+					deleteComment();
+				}else{
+					throw new Exception('Erreur');
+				}
+				break;	
 		}
 	}else{
 		displayEpisodesNews();

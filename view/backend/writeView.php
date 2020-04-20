@@ -1,6 +1,6 @@
 
 <?php
-$head_title = 'Billet simple pour l\'Alaska - Administration';
+$head_title = 'Billet simple pour l\'Alaska - Ecrire un épisode';
 ob_start();
 ?>
 <h1>Ecrire un nouvel épisode</h1>

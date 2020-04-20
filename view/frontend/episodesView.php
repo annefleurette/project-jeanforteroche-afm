@@ -11,7 +11,13 @@ if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
 <section id="novel-episodes"> <!-- Section qui affiche tous les épisodes -->
     <h1>Billet simple pour l'Alaska</h1>
     <?php
-    if($nbepisode_all > 0) { // Si des épisodes publiés existent bien
+    if(empty($nbepisodes))
+    { // S'il n'y a pas d'épisode publié
+    ?>
+        <p>Jean Forteroche n'a pas encore publié d'épisode</p>
+    <?php
+    }else{
+    // Si des épisodes publiés existent bien
     ?>
         <ul> <!-- On affiche les épisodes -->
             <?php
@@ -33,11 +39,7 @@ if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
         for($pages=1 ; $pages<= $reading_pages ; $pages++){
             echo '<a href="index.php?action=episode&amp;page='. $pages . '" style="margin:2px;">' . $pages . '</a>';
             }
-    }else{ // S'il n'y a pas d'épisode publié
-    ?>
-        <p>Jean Forteroche n'a pas encore publié d'épisode</p>
-    <?php
-    }
+    } 
     ?>
 </section>
 <?php $body_content = ob_get_clean();
