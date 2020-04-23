@@ -35,6 +35,17 @@ class MemberManager extends Manager
 	    return $exe_emails;
 	}
 
+	// On récupère l'eamil d'un membre sur la base de son pseudo
+	public function getMemberEmail($pseudo)
+	{
+		$db = $this->dbConnect();
+		$req_email = $db->query('SELECT email FROM members WHERE pseudo = ?');
+		$req_email->execute(array($pseudo));
+	    $exe_email = $req_email->fetch;
+	    $req_email->closeCursor();
+	    return $exe_email;
+	}
+
 	// On récupère les informations de membre qui correspondent à l'email saisi
 	public function getMemberInfo($email)
 	{

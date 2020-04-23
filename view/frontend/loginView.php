@@ -20,6 +20,10 @@ ob_start();
             <p>
                 <input type="submit" value="Se connecter">
             </p>
+            <p>
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Se souvenir de moi</label>
+            </p>
         </form>
     <?php
     }else{

@@ -1,8 +1,16 @@
 <?php
 session_start();
-require('controller/frontend.php');
-require('controller/backend.php');
+
+// Chargement des classes
+require_once('controller/frontend.php');
+require_once('controller/backend.php');
+
+use AnneFleurMarchat\JeanForteroche\Controller\FrontendController;
+use AnneFleurMarchat\JeanForteroche\Controller\BackendController;
+
 try {
+	$frontendController = new FrontendController();
+	$backendController = new BackendController();
 	if(isset($_GET['action']))
 	{
 		switch($_GET['action'])
@@ -10,50 +18,50 @@ try {
 			case 'episode':
 				if(isset($_GET['number']))
 				{
-					displayEpisodeUnitary();
+					$frontendController->displayEpisodeUnitary();
 				}else{
-					displayEpisodesList();
+					$frontendController->displayEpisodesList();
 				}
 				break;
 			case 'comment_post':
-				addComment();
+				$frontendController->addComment();
 				break;
 			case 'subscription':
-				subscription();
+				$frontendController->subscription();
 				break;
 			case 'subscription_post':
-				subscriptionPost();
+				$frontendController->subscriptionPost();
 				break;
 			case 'login':
-				login();
+				$frontendController->login();
 				break;
 			case 'login_post':
-				loginPost();
+				$frontendController->loginPost();
 				break;
 			case 'logout':
-				logout();
+				$frontendController->logout();
 				break;
 			case 'unsubscribe':
-				unsubscribe();
+				$frontendController->unsubscribe();
 				break;
 			case 'admin':
 				if(isset($_SESSION['pseudo']) AND ($_SESSION['type'] == "admin"))
 				{
-					displayAdmin();
+					$backendController->displayAdmin();
 				}else{
 					throw new Exception('Erreur');
 				}
 				break;
 			case 'write':
-				writeEpisode();
+				$backendController->writeEpisode();
 				break;
 			case 'write_post':
-				writeEpisodePost();
+				$backendController->writeEpisodePost();
 				break;
 			case 'delete_episode':
 				if(isset($_GET['id']))
 				{
-					deleteEpisode();
+					$backendController->deleteEpisode();
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -61,18 +69,18 @@ try {
 			case 'update_episode':
 				if(isset($_GET['id']))
 				{
-					updateEpisode();
+					$backendController->updateEpisode();
 				}else{
 					throw new Exception('Erreur');
 				}
 				break;
 			case 'update_post':
-				updateEpisodePost();
+				$backendController->updateEpisodePost();
 				break;
 			case 'look_episode':
 				if(isset($_GET['id']))
 				{
-					lookEpisode();
+					$backendController->lookEpisode();
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -80,7 +88,7 @@ try {
 			case 'alert_post':
 				if(isset($_GET['id']))
 				{
-					alertCommentPost();
+					$backendController->alertCommentPost();
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -88,7 +96,7 @@ try {
 			case 'alert_cancel':
 				if(isset($_GET['id']))
 				{
-					alertCommentCancel();
+					$backendController->alertCommentCancel();
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -96,14 +104,14 @@ try {
 			case 'delete_comment':
 				if(isset($_GET['id']))
 				{
-					deleteComment();
+					$backendController->deleteComment();
 				}else{
 					throw new Exception('Erreur');
 				}
 				break;	
 		}
 	}else{
-		displayEpisodesNews();
+		$frontendController->displayEpisodesNews();
 	}
 }catch(Exception $e){
     $errorMessage = $e->getMessage();
