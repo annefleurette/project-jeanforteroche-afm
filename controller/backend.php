@@ -189,7 +189,7 @@ class BackendController {
             echo '<div class="confirmation-message"><p>Le commentaire a été signalé à l\'administration</p></div>';
             // On retourne sur l'épisode
             $exe_back_episode = $episodeManager->getEpisodeNumberBack($getid);
-            echo '<p><a href="index.php?action=episode&amp;number=' .$exe_back_episode['number_episode_episodes'].'">Retour</a></p>';
+            echo '<p><a href="index.php?action=episode&number=' .$exe_back_episode['number_episode_episodes'].'">Retour</a></p>';
         }else{
             throw new \Exception('Erreur');
         }

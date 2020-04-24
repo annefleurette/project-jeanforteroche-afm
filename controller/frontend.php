@@ -86,9 +86,9 @@ class FrontendController {
 				$exe_idepisode = $episodeManager->getEpisodeId($getnumber);
 				// On enregistre le commentaire dans la base de données
 				$newcomment = $commentManager->postComment($exe_idepisode, $exe_idpseudo, $postcomment);
-				header('Location: index.php?action=episode&amp;number=' . $getnumber);
+				header('Location: index.php?action=episode&number=' . $getnumber);
 			}else{
-				header('Location: index.php?action=episode&amp;number=' . $getnumber);
+				header('Location: index.php?action=episode&number=' . $getnumber);
 			}   
 		}else{ // Sinon renvoi vers la pages Inscription/Connexion
 			header('Location: index.php?action=subscription');

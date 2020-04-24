@@ -10,7 +10,7 @@ if (!empty($episode_unitary_published))
 ?>
     <section id="episode-read"> <!-- Section avec l'épisode à lire -->
         <h1>Billet simple pour l'Alaska</h1>
-        <h2>Episode n°<?php echo htmlspecialchars($_GET['number']);?> : <?php echo $episode_unitary_published['episode_title']; ?></h2>
+        <h2>Episode n°<?php echo $getnumber;?> : <?php echo $episode_unitary_published['episode_title']; ?></h2>
         <p><?php echo $episode_unitary_published['episode_content']; ?></p>
         <?php // Affichage des boutons épisodes précédents/suivants
         if($episode_current <= 1)
@@ -68,7 +68,7 @@ if (!empty($episode_unitary_published))
         <?php
         }else{
         ?>
-            <form action="index.php?action=comment_post&amp;number=<?php echo htmlspecialchars($_GET['number']);?>" method="post">
+            <form action="index.php?action=comment_post&amp;number=<?php echo $getnumber;?>" method="post">
                 <p>
                     <label for="comment">Commentaire :</label><br />
                     <textarea id="comment" name="comment" rows="5" cols="33" minlength = "4" required></textarea>
