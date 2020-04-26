@@ -27,7 +27,7 @@
     <?php
     }else if(!isset($_SESSION['pseudo'])){
     ?>
-    <p><a href="mailto:jeanforteroche2020@gmail.com"><i class="fas fa-feather-alt"></i>Contacter Jean Forteroche</a></p>
+    <p><a href="mailto:jeanforteroche2020@gmail.com">Contacter Jean Forteroche</a></p>
     <?php
     }
     ?>

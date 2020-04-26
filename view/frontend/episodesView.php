@@ -8,37 +8,48 @@ if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
 <?php
 }
 ?>
-<section id="novel-episodes"> <!-- Section qui affiche tous les épisodes -->
-    <h1>Billet simple pour l'Alaska</h1>
+<section id="novel-episodes" class="novel-section"> <!-- Section qui affiche tous les épisodes -->
+    <h1>BILLET SIMPLE POUR L'ALASKA</h1>
+    <h2>Tous les épisodes publiés</h2>
+    <hr />
     <?php
     if(empty($nbepisodes))
     { // S'il n'y a pas d'épisode publié
     ?>
-        <p>Jean Forteroche n'a pas encore publié d'épisode</p>
+        <p class="episode__no">Jean Forteroche n'a pas encore publié d'épisode</p>
     <?php
     }else{
     // Si des épisodes publiés existent bien
     ?>
-        <ul> <!-- On affiche les épisodes -->
-            <?php
-            foreach ($episode_all as $episodes_all){
-            ?>
-                <li>
-                    <article>
-                        <p>Episode n°<?php echo $episodes_all['episode_number']; ?> :</p>
-                        <h2><?php echo $episodes_all['episode_title']; ?></h2>
-                        <a href="index.php?action=episode&amp;number=<?php echo $episodes_all['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
-                    </article>
-                </li>  
-            <?php
-            }
-            ?>
-        </ul>
-        <?php
-        //Affichage des pages avec 3 épisodes par page
-        for($pages=1 ; $pages<= $reading_pages ; $pages++){
-            echo '<a href="index.php?action=episode&amp;page='. $pages . '" style="margin:2px;">' . $pages . '</a>';
-            }
+        <div class="novel-episodes__list">
+            <ul> <!-- On affiche les épisodes -->
+                <?php
+                foreach ($episode_all as $episodes_all){
+                ?>
+                    <li class="row">
+                        <article class="col-md-8 col-sm-10 col-xs-12">
+                            <p>Episode n°<?php echo $episodes_all['episode_number']; ?></p>
+                            <h3><?php echo $episodes_all['episode_title']; ?></h3>
+                            <a href="index.php?action=episode&amp;number=<?php echo $episodes_all['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
+                        </article>
+                    </li>  
+                <?php
+                }
+                ?>
+            </ul>
+            <p class="novel-episodes__list__pagination">
+                <?php
+                //Affichage des pages avec 3 épisodes par page
+                for($pages=1 ; $pages<= $reading_pages ; $pages++)
+                {
+                ?>
+                    <a href="index.php?action=episode&amp;page=<?php echo $pages; ?>" style="margin:2px;"><?php echo $pages; ?></a>
+                <?php
+                }
+                ?>
+            </p>
+        </div>
+    <?php
     } 
     ?>
 </section>

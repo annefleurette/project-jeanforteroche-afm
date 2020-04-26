@@ -3,23 +3,20 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" href="./public/style/style.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Concert+One|Lato:300,400,700|Pacifico&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="public/css/style.css" />
         <title><?php $head_title ?></title>
         <script src='https://cdn.tiny.cloud/1/rusvh5uity3vzz9zncbvyfu2ngucer16rijxcr2fhxwkn4mb/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
         <script>
             tinymce.init({
             selector: '#content',
             content_css : 'style.css',
-            height: 300,
-            convert_fonts_to_spans : false,
-            invalid_elements: "span"
+            height: 300
             });
         </script>
     </head>
     <body>
-        <div class="container-fluid p-0">
+        <div class="container">
         <?php require("./view/header.php");?>
            <?php echo $body_content; ?>
         <?php require("./view/footer.php");?>

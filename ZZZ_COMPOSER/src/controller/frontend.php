@@ -15,7 +15,7 @@ class FrontendController {
 	{
 		$episodeManager = new EpisodeManager();
 		// On récupère le premier épisode de la série qui a été publié
-		$episode_first = $episodeManager->getEpisodeFirst();
+		$req_first = $episodeManager->getEpisodeFirst();
 		// On récupère les 3 derniers épisodes publiés
 		$episode_three = $episodeManager->getEpisodesLastThree();        
 		$nbepisode_three = count($episode_three);
