@@ -14,39 +14,37 @@ ob_start();
     </div>                
 </section>
 <section id="novel-lastepisodes" class="novel-section"> <!-- Section qui regroupe les 3 derniers épisodes publiés -->
-    <div class="layout">
-        <h2>Derniers épisodes publiés</h2>
-        <hr />
-        <div class="novel-episodes__list">
-            <?php
-            if($nbepisode_three > 0)
-            {
-            ?>
-                <ul> <!-- On affiche les 3 derniers épisodes -->
-                    <?php
-                    foreach ($episode_three as $last_episode_three)
-                    {
-                    ?>
-                        <li class="row">
-                            <article class="col-md-8 col-sm-10 col-xs-12">
-                                <p>Episode n°<?php echo $last_episode_three['episode_number']; ?></p>
-                                <h3><?php echo $last_episode_three['episode_title']; ?></h3>
-                                <a href="index.php?action=episode&amp;number=<?php echo $last_episode_three['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
-                            </article>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            <?php
-            }else{
-            ?>
-                <p class="episode__no">Pas d'épisode publié</p>
-            <?php
-            }
-            ?>  
-            <p><a href="index.php?action=episode" class="btn btn__CTA">Voir tous les épisodes</a></p>
-        </div>
+    <h2>Derniers épisodes publiés</h2>
+    <hr />
+    <div class="novel-episodes__list">
+        <?php
+        if($nbepisode_three > 0)
+        {
+        ?>
+            <ul> <!-- On affiche les 3 derniers épisodes -->
+                <?php
+                foreach ($episode_three as $last_episode_three)
+                {
+                ?>
+                    <li class="row">
+                        <article class="col-md-8 col-sm-10 col-xs-12">
+                            <p>Episode n°<?php echo $last_episode_three['episode_number']; ?></p>
+                            <h3><?php echo $last_episode_three['episode_title']; ?></h3>
+                            <a href="index.php?action=episode&amp;number=<?php echo $last_episode_three['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
+                        </article>
+                    </li>
+                <?php
+                }
+                ?>
+            </ul>
+        <?php
+        }else{
+        ?>
+            <p class="episode__no">Pas d'épisode publié</p>
+        <?php
+        }
+        ?>  
+        <p><a href="index.php?action=episode" class="btn btn__CTA">Voir tous les épisodes</a></p>
     </div>
 </section>
 <section id="novel-author" class="novel-section"> <!-- Section qui présente l'auteur -->

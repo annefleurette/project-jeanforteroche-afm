@@ -57,12 +57,12 @@ if (!empty($episode_unitary_published))
             foreach ($comments as $comment_data)
             {
             ?>
-                <li class="row justify-content-center">
+                <li class="row justify-content-center no-gutters">
                     <article class="col-md-8 col-sm-10 col-xs-12">
-                        <p><?php echo $comment_data['pseudo_members']; ?> le <?php echo $comment_data['date_comment_fr']; ?></p>
+                        <p><strong><?php echo $comment_data['pseudo_members']; ?></strong> le <?php echo $comment_data['date_comment_fr']; ?></p>
                         <p><?php echo nl2br($comment_data['comment_comments']); ?></p>
                         <form action="index.php?action=alert_post&amp;id=<?php echo $comment_data['id_comments'];?>" method="post">
-                            <input type="submit" value="Signaler">
+                            <input class="btn btn__alert" type="submit" value="Signaler">
                         </form>
                     </article>
                 </li>
