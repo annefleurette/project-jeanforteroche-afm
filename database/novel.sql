@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  lun. 20 avr. 2020 à 15:50
+-- Généré le :  lun. 27 avr. 2020 à 19:49
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -42,7 +42,10 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `id_episode`, `id_pseudo`, `comment`, `date_comment`, `alert`) VALUES
 (2, 62, 14, 'J\'adore le début du roman ! Que de suspens !', '2020-04-20 17:36:59', 'non'),
 (3, 62, 9, 'Merci pour ton retour ! J\'espère que la suite te plaira tout autant :)', '2020-04-20 17:37:32', 'non'),
-(4, 62, 15, 'bluuuuuuurg', '2020-04-20 17:38:49', 'oui');
+(4, 62, 15, 'bluuuuuuurg', '2020-04-20 17:38:49', 'oui'),
+(5, 63, 9, 'J\'espère que cet épisode vous plaira !', '2020-04-24 12:45:49', 'non'),
+(6, 63, 9, 'Vraiment !', '2020-04-24 12:47:17', 'non'),
+(7, 63, 9, 'Alors ?', '2020-04-24 12:47:58', 'oui');
 
 -- --------------------------------------------------------
 
@@ -67,7 +70,7 @@ INSERT INTO `episodes` (`id`, `episode_number`, `episode_title`, `episode_conten
 (63, 2, 'Matinée ensoleillée', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Suspendisse sit amet suscipit sem, vitae feugiat orci. Pellentesque vitae sapien dictum, posuere ipsum at, pulvinar lorem. In hac habitasse platea dictumst. Nam ac egestas magna, eget malesuada tortor. Etiam consequat orci auctor magna aliquam rhoncus. Integer sodales malesuada viverra. Sed ullamcorper ornare enim. Pellentesque interdum placerat eros, eu elementum libero mattis eu. Praesent sit amet sollicitudin magna, nec blandit nisi. Phasellus sit amet iaculis lacus. Fusce vulputate, leo nec bibendum consectetur, metus velit tincidunt enim, eu malesuada erat augue elementum dui. Sed condimentum tincidunt massa. Proin placerat laoreet dolor, sit amet malesuada lectus venenatis eget.</span></p>', 'published'),
 (64, 3, 'Après-midi sous le vent', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Nulla facilisi. Sed efficitur sem eu magna maximus, quis vestibulum nulla elementum. Morbi neque ligula, vestibulum in imperdiet in, suscipit tincidunt tellus. Nullam semper non purus sit amet placerat. Ut faucibus ullamcorper mi in mollis. Maecenas iaculis est ipsum, non luctus odio euismod non. Quisque lacinia lacus malesuada maximus dapibus. Proin viverra ante eu orci volutpat luctus. Vestibulum maximus vitae odio at pretium. Nulla ex nulla, ornare eget sodales ut, rutrum eu turpis.</span></p>', 'published'),
 (65, 4, 'Soirée hivernale', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Praesent nec aliquet tortor. Aenean condimentum ante eget ante dignissim sagittis. Vestibulum maximus ex quis erat ornare, sed aliquam est tincidunt. Morbi quis magna lobortis, volutpat est vel, feugiat nisl. Maecenas elementum facilisis tempus. Sed rutrum tincidunt sapien, eu luctus odio ornare a. Nunc ut est non nunc laoreet porta. Suspendisse gravida bibendum tincidunt. Morbi leo nunc, maximus vel luctus eu, sagittis id dolor. Morbi diam nisl, dignissim vel risus tempor, luctus efficitur arcu.</span></p>', 'published'),
-(68, 5, 'Nuit glaciale', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; font-size: 14px; text-align: justify; background-color: #ffffff;\">Fusce feugiat orci vel libero elementum, ac volutpat velit fringilla. Fusce vel maximus elit. Vivamus porttitor non eros at imperdiet. Nam a eros sed felis porta gravida eu eget metus. Proin feugiat facilisis leo id gravida. Sed at lacus libero. Sed sollicitudin sit amet ligula eu euismod. Vivamus feugiat neque egestas turpis varius, vel convallis diam sollicitudin. Nam sit amet odio ut odio aliquam semper. Sed euismod lorem eu posuere pharetra. Fusce porttitor scelerisque turpis vel consequat. Curabitur quis elit sit amet augue porta imperdiet. Sed pharetra pulvinar mauris et malesuada. Mauris sagittis urna volutpat mattis ultrices. Morbi iaculis posuere urna, eget sodales tellus sollicitudin vitae.</span></p>', 'inprogress');
+(68, 5, 'Nuit glaciale', '<p>Fusce feugiat orci vel libero elementum, ac volutpat velit fringilla. Fusce vel maximus elit. Vivamus porttitor non eros at imperdiet. Nam a eros sed felis porta gravida eu eget metus. Proin feugiat facilisis leo id gravida. Sed at lacus libero. Sed sollicitudin sit amet ligula eu euismod. Vivamus feugiat neque egestas turpis varius, vel convallis diam sollicitudin. Nam sit amet odio ut odio aliquam semper. Sed euismod lorem eu posuere pharetra. Fusce porttitor scelerisque turpis vel consequat. Curabitur quis elit sit amet augue porta imperdiet. Sed pharetra pulvinar mauris et malesuada. Mauris sagittis urna volutpat mattis ultrices. Morbi iaculis posuere urna, eget sodales tellus sollicitudin vitae.</p>', 'inprogress');
 
 -- --------------------------------------------------------
 
@@ -125,7 +128,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `episodes`
@@ -137,7 +140,7 @@ ALTER TABLE `episodes`
 -- AUTO_INCREMENT pour la table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Contraintes pour les tables déchargées
