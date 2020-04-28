@@ -2,7 +2,7 @@
 $head_title = 'Billet simple pour l\'Alaska - Modifier un épisode';
 ob_start();
 ?>
-<section id="update-episode">
+<section id="episode-update">
     <?php
     if($episode_unitary['episode_status'] == "published")
     { // Si l'épisode est un épisode déjà publié

@@ -8,11 +8,12 @@
         <link rel="stylesheet" href="public/css/style.css" />
         <title><?php $head_title ?></title>
         <script src='https://cdn.tiny.cloud/1/rusvh5uity3vzz9zncbvyfu2ngucer16rijxcr2fhxwkn4mb/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+        <script src="https://kit.fontawesome.com/3492d8c303.js" crossorigin="anonymous"></script>
         <script>
             tinymce.init({
             selector: '#content',
             content_css : 'style.css',
-            height: 300,
+            height: 600,
             convert_fonts_to_spans : false,
             invalid_elements: "span"
             });

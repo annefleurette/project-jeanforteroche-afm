@@ -3,7 +3,7 @@
     if(isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader"){
     ?>
     <p><a href="mailto:jeanforteroche2020@gmail.com">Contacter Jean Forteroche</a></p>
-    <p><button type="button" data-toggle="modal" data-target="#Modal">Supprimer mon compte</button></p>
+    <p><button class="btn btn__alert" type="button" data-toggle="modal" data-target="#Modal">Supprimer mon compte</button></p>
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

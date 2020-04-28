@@ -133,16 +133,16 @@ class FrontendController {
 						);
 						mail($to, $subject, $message, $headers);
 					}else{
-						echo '<div class="error-message"><p>Les mots de passe ne correspondent pas</p><p><a href="index.php?action=subscription">Retour</a></p></div>';
+						echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Les mots de passe ne correspondent pas</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=subscription">Retour</a></p></div>'; 
 					}
 				}else{
-					echo '<div class="error-message"><p>Il y a une erreur dans l\'adresse email</p><p><a href="index.php?action=subscription">Retour</a></p></div>';
+					echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Il y a une erreur dans l\'adresse email</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=subscription">Retour</a></p></div>';
 				}
 			}else{
-				echo '<div class="error-message"><p>Ce pseudo ou cet email est déjà utilisé</p><p><a href="index.php?action=subscription">Retour</a></p></div>';
+				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Ce pseudo ou cet email est déjà utilisé</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=subscription">Retour</a></p></div>';
 			}
 		}else{
-			echo '<div class="error-message"><p>Vous n\'avez pas complété tous les champs</p><p><a href="index.php?action=subscription">Retour</a></p></div>';
+			echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas complété tous les champs</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=subscription">Retour</a></p></div>';
 		}
 	}
 
@@ -160,11 +160,11 @@ class FrontendController {
 			$postpassword = htmlspecialchars($_POST['password']);
 			// On récupère les informations de membre qui correspondent à l'email saisi
 			$info_member = $memberManager->getMemberInfo($postemail);
-			$isPasswordCorrect = password_verify($postpassword, $info_member['password']);
 			if(!$info_member)
 			{
-				echo '<div class="error-message"><p>Mauvais identifiant ou mot de passe</p><p><a href="index.php?action=login">Retour</a></p></div>';    
+				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Mauvais identifiant ou mot de passe</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=login">Retour</a></p></div>';    
 			}else{
+				$isPasswordCorrect = password_verify($postpassword, $info_member['password']);
 				if ($isPasswordCorrect)
 				{
 					session_start();
@@ -180,11 +180,11 @@ class FrontendController {
 						header('Location: index.php?action=episode');
 					}
 				}else{
-					echo '<div class="error-message"><p>Mauvais identifiant ou mot de passe</p><p><a href="index.php?action=login">Retour</a></p></div>';  
+					echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Mauvais identifiant ou mot de passe</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=login">Retour</a></p></div>';  
 				}
 			}
 		}else{
-			echo '<div class="error-message"><p>Vous n\'avez pas saisi votre identifiant ou votre mot de passe</p><p><a href="index.php?action=login">Retour</a></p></div>'; 
+			echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas saisi votre identifiant ou votre mot de passe</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=login">Retour</a></p></div>'; 
 		}
 	}
 

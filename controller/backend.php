@@ -57,10 +57,10 @@ class BackendController {
                     $req_add_episode = $episodeManager->addEpisodeInprogress($postnumber, $posttitle, $_POST['content']);
                     header('Location: index.php?action=admin');
                 }else{
-                    echo '<div class="error-message"><p>Vous avez déjà publié ce numéro d\'épisode !</p><p><a href="index.php?action=write">Recommencer</a></p></div>';
+                    echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous avez déjà publié ce numéro d\'épisode !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=write">Recommencer</a></p></div>';
                 }
             }else{
-                echo '<div class="error-message"><p>Vous n\'avez pas rempli tous les champs</p><p><a href="index.php?action=write">Recommencer</a></p></div>';
+                echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas rempli tous les champs</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=write">Recommencer</a></p></div>';
             }
         }else{ // Si le bouton Publier est choisi
             // Enregistrement de l'épisode à publier dans la base de données
@@ -77,10 +77,10 @@ class BackendController {
                     $req_add_episode_published = $episodeManager->addEpisodePublished($postnumber, $posttitle, $_POST['content']);
                     header('Location: index.php?action=admin');
                 }else{
-                    echo '<div class="error-message"><p>Vous avez déjà publié ce numéro d\'épisode ou cet épisode n\'est pas le suivant du dernier épisode publié !</p><p><a href="index.php?action=write">Recommencer</a></p></div>';
+                    echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous avez déjà publié ce numéro d\'épisode ou cet épisode n\'est pas le suivant du dernier épisode publié !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=write">Recommencer</a></p></div>';
                 }
             }else{
-                echo '<div class="error-message"><p>Vous n\'avez pas rempli tous les champs</p><p><a href="index.php?action=write">Recommencer</a></p></div>';
+                echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas rempli tous les champs</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=write">Recommencer</a></p></div>';
             }
         }
     }
@@ -128,10 +128,10 @@ class BackendController {
                     $update_episode_inprogress = $episodeManager->updateEpisodeInprogress($postnumber, $posttitle, $_POST['content'], $status_progress, $getid); 
                     header('Location: index.php?action=admin');
                 }else{
-                    echo '<div class="error-message"><p>Vous avez déjà publié ce numéro d\'épisode</p><p><a href="index.php?action=admin">Recommencer</a></p></div>';
+                    echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous avez déjà publié ce numéro d\'épisode</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=admin">Recommencer</a></p></div>';
                 }
             }else{
-                echo '<div class="error-message"><p>Vous n\'avez pas rempli tous les champs</p><p><a href="index.php?action=admin">Recommencer</a></p></div>';
+                echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas rempli tous les champs</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=admin">Recommencer</a></p></div>';
             }
         } else { // Si le bouton Publier est choisi
         // Enregistrement de l'épisode à publier dans la base de données
@@ -151,7 +151,7 @@ class BackendController {
                     $update_episode_inprogress = $episodeManager->updateEpisodeInprogress($postnumber, $posttitle, $_POST['content'], $status_published, $getid); 
                     header('Location: index.php?action=admin');
                 }else{
-                    echo '<div class="error-message"><p>Vous avez déjà publié ce numéro d\'épisode ou cet épisode n\'est pas le suivant du dernier épisode publié !</p><p><a href="index.php?action=admin">Recommencer</a></p></div>';
+                    echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous avez déjà publié ce numéro d\'épisode ou cet épisode n\'est pas le suivant du dernier épisode publié !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=admin">Recommencer</a></p></div>';
                 }
             }elseif(!isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))
             {
@@ -186,10 +186,10 @@ class BackendController {
         {
             // On modifie le statut d'alerte d'un commentaire
             $update_alert = $commentManager->updateCommentAlert($alert_update, $getid);
-            echo '<div class="confirmation-message"><p>Le commentaire a été signalé à l\'administration</p></div>';
+            echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Le commentaire a été signalé à l\'administration</p></div>';
             // On retourne sur l'épisode
             $exe_back_episode = $episodeManager->getEpisodeNumberBack($getid);
-            echo '<p><a href="index.php?action=episode&number=' .$exe_back_episode['number_episode_episodes'].'">Retour</a></p>';
+            echo '<p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=episode&number=' .$exe_back_episode['number_episode_episodes'].'">Retour</a></p>';
         }else{
             throw new \Exception('Erreur');
         }
@@ -206,7 +206,7 @@ class BackendController {
         {
             // On modifie le statut d'alerte d'un commentaire
             $update_alert = $commentManager->updateCommentAlert($alert_update, $getid);
-            echo '<div class="confirmation-message"><p>Le commentaire n\'est plus signalé</p><p><a href="index.php?action=admin">Retour</a></p></div>';
+            echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Le commentaire n\'est plus signalé</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="index.php?action=admin">Retour</a></p></div>';
         }else{
             throw new \Exception('Erreur');
         }

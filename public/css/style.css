@@ -115,6 +115,14 @@
 
 	/* Blocs */
 
+	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification {
+		padding-top: 230px;
+	}
+
+	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification {
+		margin-bottom: 50px;
+	}
+
 	.novel-section article {
 		display: flex;
 		flex-direction: row;
@@ -243,9 +251,9 @@ footer p a:hover {
 	color: #445EF2;
 }
 
-/* Mise en forme de la page d'accueil */
+/* Mise en forme de la page d'accueil (Front) */
 
-	/* Mise en forme de la section de présentation du roman */
+	/* Mise en forme de la section de présentation du roman (Front) */
 
 	#novel-presentation {
 		padding: 200px 15px;
@@ -270,17 +278,16 @@ footer p a:hover {
 		color: #0D0D0D;
 	}
 
-	/* Mise en forme des 3 derniers épisodes */
+	/* Mise en forme des 3 derniers épisodes (Front) */
 
 	#novel-lastepisodes {
 		margin: 50px 0 80px 0;
 	}
 
-	/* Mise en forme de la présentation de l'auteur */
+	/* Mise en forme de la présentation de l'auteur (Front) */
 
 	#novel-author {
 		padding: 0 15px;
-		margin-bottom: 50px;
 	}
 
 	#novel-author div p:first-child {
@@ -291,12 +298,7 @@ footer p a:hover {
 		padding: 54px 0 0 0;
 	}
 
-/* Mise en forme de la lecture de tous les épisodes */
-
-#novel-episodes {
-	padding-top: 230px;
-	margin-bottom: 50px;
-}
+/* Mise en forme de la lecture de tous les épisodes (Front) */
 
 #novel-episodes h1 {
 	margin-bottom: 38px;
@@ -307,20 +309,19 @@ footer p a:hover {
 	margin: auto;
 }
 
-/* Mise en forme de la lecture unitaire d'un épisode */
+/* Mise en forme de la lecture unitaire d'un épisode (Front & Back) */
 
-	/* Lecture de l'épisode */
+	/* Lecture de l'épisode (Front) + Aperçu d'un épisode (Back) */
 
 	#episode-read {
-		padding-top: 230px;
 		margin-bottom: 80px;
 	}
 
-	#episode-read h1 {
+	#episode-read h1, #episode-look h1 {
 		margin-bottom: 38px;
 	}
 
-	#episode-read h2, #episode-comments h2 {
+	#episode-read h2, #episode-look h2, #episode-comments h2 {
 		margin-bottom: 30px;
 	}
 
@@ -329,7 +330,7 @@ footer p a:hover {
 		padding: 0 15px;
 	}
 
-	#episode-read p {
+	#episode-read p, #episode-look p {
 		background-color: #FFFFFF;
 		border: 1px #FFFFFF solid; 
 		border-radius: 5px;
@@ -337,7 +338,7 @@ footer p a:hover {
 		line-height: 31px;
 	}
 
-	.episode-read__pagination {
+	.episode-read__pagination, .episode-look__back {
 		text-align: center;
 		margin-top: 40px;
 		padding: 0px 15px;
@@ -351,11 +352,7 @@ footer p a:hover {
 		margin-left: 15px;
 	}
 
-	/* Lecture des commentaires */
-
-	#episode-comments {
-		margin-bottom: 50px;
-	}
+	/* Lecture des commentaires (Front) */
 
 	#episode-comments ul {
 		padding: 0;
@@ -384,7 +381,7 @@ footer p a:hover {
 		background-color: #9BA8F2;
 	}
 
-	/* Ecriture des commentaires */
+	/* Ecriture des commentaires (Front) */
 
 	#episode-comments .post-comment {
 		text-align: center;
@@ -396,11 +393,11 @@ footer p a:hover {
 		height: 200px;
 	}
 
-/* Mise en forme de l'inscription et de la connexion */
+/* Mise en forme de l'inscription et de la connexion (Front) */
 
 .identification {
-	padding: 230px 15px 0 15px;
-	margin-bottom: 80px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .identification h1 {
@@ -421,6 +418,36 @@ footer p a:hover {
 }
 
 .identification__complement {
+	text-align: center;
+}
+
+/* Mise en forme de l'écriture et la modification d'épisodes (Back) */
+
+.write h1 {
+	margin-bottom: 80px;
+}
+
+.write form {
+	text-align: center;
+}
+
+.write__number {
+	min-width: 30px;
+}
+
+.write__title {
+	min-width: 400px;
+}
+
+.write__content {
+	min-width: 290px;
+}
+
+.write form .btn {
+	margin-bottom: 30px;
+}
+
+.write__complement {
 	text-align: center;
 }
 
@@ -478,7 +505,7 @@ footer p a:hover {
 		padding: 15px;
 	}
 
-	#novel-episodes, #episode-read {
+	#novel-episodes, #episode-read, #episode-look {
 		padding-top: 110px;
 	}
 	
