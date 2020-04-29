@@ -19,7 +19,7 @@ class FrontendController {
 		// On récupère les 3 derniers épisodes publiés
 		$episode_three = $episodeManager->getEpisodesLastThree();        
 		$nbepisode_three = count($episode_three);
-		require('./view/frontend/indexView.php');
+		require('./src/View/frontend/indexView.php');
 	}
 
 	public function displayEpisodesList()
@@ -45,7 +45,7 @@ class FrontendController {
 			$nbepisode_all = count($episode_all);
 		
 		}
-		require('./view/frontend/episodesView.php');
+		require('./src/View/frontend/episodesView.php');
 	}
 
 	public function displayEpisodeUnitary()
@@ -66,7 +66,7 @@ class FrontendController {
 		$comments = $commentManager->getEpisodeComment($exe_idepisode);
 		// On compte le nombre de commentaires
 		$nbcomments = count($comments);
-		require('./view/frontend/episodeView.php');
+		require('./View/frontend/episodeView.php');
 	}
 
 	public function addComment()
@@ -97,7 +97,7 @@ class FrontendController {
 
 	public function subscription()
 	{
-		require('./view/frontend/subscriptionView.php');
+		require('./View/frontend/subscriptionView.php');
 	}
 
 	public function subscriptionPost()
@@ -148,7 +148,7 @@ class FrontendController {
 
 	public function login()
 	{
-		require('./view/frontend/loginView.php');
+		require('./View/frontend/loginView.php');
 	}
 
 	public function loginPost()

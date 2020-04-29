@@ -2,11 +2,12 @@
 $head_title = 'Billet simple pour l\'Alaska - Administration';
 ob_start();
 ?>
-<h1>Bonjour <?php echo htmlspecialchars($_SESSION['pseudo']);?></h1>
+<h1 class="admin-jf">Bonjour <?php echo htmlspecialchars($_SESSION['pseudo']);?></h1>
 <section id="admin-episodes">
 	<h2>Gestion des épisodes</h2>
-	<section id="admin-episodes-published" class="backoffice-block"> <!-- Section qui liste les épisodes publiés -->
-	    <a href="index.php?action=write" class="btn btn__CTA">Ajouter un nouvel épisode</a>
+	<hr />
+	<section id="admin-episodes-published" class="novel-section"> <!-- Section qui liste les épisodes publiés -->
+	    <p class="new-episode"><a href="index.php?action=write" class="btn btn__CTA">Ajouter un nouvel épisode</a></p>
 	    <h3>Episodes publiés</h3>
 	    <?php          
 	    if($nbepisode_published > 0)
@@ -20,7 +21,7 @@ ob_start();
 	        	<li>
 	                <article>
 	                    <p>Episode n°<?php echo $published_episode['episode_number']; ?> :</p>
-	                    <h3><?php echo $published_episode['episode_title']; ?></h3>
+	                    <h4><?php echo $published_episode['episode_title']; ?></h4>
 	                    <ul>
 	                        <!-- Lire l'épisode -->
 	                        <li><a href="index.php?action=episode&amp;number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
@@ -65,12 +66,12 @@ ob_start();
 	        <?php
 	    }else{
 	    ?>
-	        <p>Pas d'épisode publié</p>
+	        <p class="episode__no">Pas d'épisode publié</p>
 	    <?php
 	    }
 	    ?>
 	</section>
-	<section id="admin-episodes-inprogress" class="backoffice-block"> <!-- Section qui liste les épisodes enregistrés -->
+	<section id="admin-episodes-inprogress" class="novel-section"> <!-- Section qui liste les épisodes enregistrés -->
 	    <h3>Episodes en cours</h3>
 	    <?php
 	    if($nbepisode_inprogress > 0)
@@ -84,7 +85,7 @@ ob_start();
 	            <li>
 	                <article>
 	                    <p>Episode n°<?php echo $inprogress_episode['episode_number']; ?> :</p>
-	                    <h3><?php echo $inprogress_episode['episode_title']; ?></h3>
+	                    <h4><?php echo $inprogress_episode['episode_title']; ?></h4>
 	                    <ul>
 	                        <!-- Aperçu de l'épisode -->
 	                        <li><a href="index.php?action=look_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
@@ -122,7 +123,7 @@ ob_start();
 	    	<?php
 	    }else{
 	    ?>
-	        <p>Pas d'épisode enregistré</p>
+	        <p class="episode__no">Pas d'épisode enregistré</p>
 	    <?php
 	    }
 	    ?>
@@ -130,6 +131,7 @@ ob_start();
 </section>
 <section id="admin-comments">
 	<h2>Gestion des commentaires</h2>
+	<hr />
 	<section id="admin-comments-alert" class="backoffice-block"> <!-- Section qui liste les commentaires signalés -->
 		<h3>Commentaires signalés</h3>
 		<?php
@@ -147,7 +149,7 @@ ob_start();
             }
         }else{
         ?>
-            <p>Pas de commentaire signalé</p>
+            <p class="episode__no">Pas de commentaire signalé</p>
         <?php
         }  
         ?>
@@ -168,7 +170,7 @@ ob_start();
             }
         }else{
         ?>
-            <p>Pas de commentaire publié</p>
+            <p class="episode__no">Pas de commentaire publié</p>
         <?php
         }  
         ?>

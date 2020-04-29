@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "AnneFleurMarchat\\JeanForteroche\\": "src"
+            "AnneFleurMarchat\\JeanForteroche\\": "src/"
         }
     }
 }

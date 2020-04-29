@@ -26,12 +26,12 @@ class BackendController {
         // On récupère tous les commentaires
         $published_comments = $commentManager->getComments();
         $nbcomment_published = count($published_comments);
-        require('./view/backend/adminView.php');
+        require('./View/backend/adminView.php');
     }
 
     public function writeEpisode()
     {
-        require('./view/backend/writeView.php');
+        require('./View/backend/writeView.php');
     }
 
     public function writeEpisodePost()
@@ -100,7 +100,7 @@ class BackendController {
         // On affiche l'épisode que l'on va chercher sur la base de données
         $getid = htmlspecialchars($_GET['id']);
         $episode_unitary = $episodeManager->getEpisode($getid);
-        require('./view/backend/updateView.php');
+        require('./View/backend/updateView.php');
     }
 
     public function updateEpisodePost()
@@ -170,7 +170,7 @@ class BackendController {
         // On récupère l'épisode dans la base de données
         $getid = htmlspecialchars($_GET['id']);
         $lookepisode = $episodeManager->getEpisodeInprogress($getid);
-        require('./view/backend/lookView.php');
+        require('./View/backend/lookView.php');
     }
 
     public function alertCommentPost()

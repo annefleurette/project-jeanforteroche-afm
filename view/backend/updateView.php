@@ -2,7 +2,7 @@
 $head_title = 'Billet simple pour l\'Alaska - Modifier un épisode';
 ob_start();
 ?>
-<section id="episode-update">
+<section id="episode-update" class="write">
     <?php
     if($episode_unitary['episode_status'] == "published")
     { // Si l'épisode est un épisode déjà publié
@@ -11,14 +11,14 @@ ob_start();
         <form action="index.php?action=update_post&amp;id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
             <p>
                 <label for="title">Titre de l'épisode</label><br />
-                <input type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
+                <input class= "write__title update_title" type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
             </p>
             <p>
                 <label for="content">Contenu de l'épisode</label><br />
                 <textarea id="content" name="content"><?php echo $episode_unitary['episode_content']; ?></textarea>
             </p>
             <p>
-                <input type="submit" name="publish" value="Publier">
+                <input class="btn btn__read" type="submit" name="publish" value="Publier">
             </p>
         </form>
     <?php
@@ -29,19 +29,19 @@ ob_start();
         <form action="index.php?action=update_post&amp;id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
             <p>
                 <label for="number">Numéro de l'épisode</label><br />
-                <input type="number" id="number" name="number" min="1" value="<?php echo $episode_unitary['episode_number']; ?>" required>
+                <input class= "write__number update_number" type="number" id="number" name="number" min="1" value="<?php echo $episode_unitary['episode_number']; ?>" required>
             </p>
             <p>
                 <label for="title">Titre de l'épisode</label><br />
-                <input type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
+                <input class= "write__title update_title" type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
             </p>
             <p>
                 <label for="content">Contenu de l'épisode</label><br />
                 <textarea id="content" name="content"><?php echo $episode_unitary['episode_content']; ?></textarea>
             </p>
             <p>
-                <input type="submit" name="save" value="Enregistrer">
-                <input type="submit" name="publish" value="Publier">
+                <input class="btn btn__read btn__prev" type="submit" name="save" value="Enregistrer">
+                <input class="btn btn__read btn__next" type="submit" name="publish" value="Publier">
             </p>
         </form>
     <?php

@@ -17,11 +17,11 @@ ob_start();
         </p>
         <p>
             <label for="content">Contenu de l'épisode</label><br />
-            <textarea class="write__content" id="content" name="content"></textarea>
+            <textarea id="content" name="content"></textarea>
         </p>
-        <p>
-            <input type="submit" name="save" value="Enregistrer">
-            <input type="submit" name="publish" value="Publier">
+        <p class="episode-write__action">
+            <input class="btn btn__read btn__prev" type="submit" name="save" value="Enregistrer">
+            <input class="btn btn__read btn__next" type="submit" name="publish" value="Publier">
         </p>
     </form>
 </section>

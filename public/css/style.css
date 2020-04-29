@@ -22,10 +22,13 @@
 		text-align: center;
 	}
 
-	h2, h3 {
+	h2, h3, h4 {
 		font-family: 'Lato', sans-serif;
-		color: #122459;
 		text-align: center;
+	}
+
+	h2, h3 {
+		color: #122459;
 	}
 
 	h2 {
@@ -34,6 +37,12 @@
 	}
 
 	h3 {
+		font-size: 1.5em;
+		color: #be96cc;
+		margin: 0;
+	}
+
+	h4 {
 		font-size: 1.5em;
 		color: #be96cc;
 		margin: 0;
@@ -50,6 +59,10 @@
 		font-size: 1em;
 		font-weight: 400;
 		color: #445EF2;
+	}
+
+	ul {
+		list-style: none;
 	}
 
 	a:hover {
@@ -115,11 +128,11 @@
 
 	/* Blocs */
 
-	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification {
+	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification, .admin-jf {
 		padding-top: 230px;
 	}
 
-	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification {
+	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification, #admin-comments {
 		margin-bottom: 50px;
 	}
 
@@ -141,12 +154,12 @@
 		margin: 0;
 	}
 
-	.novel-section article p, .novel-section article h3 {
+	.novel-section article p, .novel-section article h3, .novel-section article h4 {
 		padding-right: 15px;
 		overflow-wrap: break-word;
 	}
 
-	.novel-section article a, .novel-section article h3 {
+	.novel-section article a, .novel-section article h3, .novel-section article h4 {
 		padding-left: 15px;
 	}	
 
@@ -155,7 +168,6 @@
 	}
 
 	.novel-episodes__list ul {
-		list-style: none;
 		margin-top: 50px;
 		padding-left: 0;
 	}
@@ -421,6 +433,30 @@ footer p a:hover {
 	text-align: center;
 }
 
+/* Mise en forme de la page d'administration des épisodes et des commentaires (Back) */
+
+.admin-jf {
+	margin-bottom: 38px;
+}
+
+#admin-episodes {
+	margin-bottom: 80px;
+}
+
+#admin-episodes h2, #admin-comments h2 {
+	margin-bottom: 30px;
+}
+
+#admin-episodes-published .new-episode {
+	text-align: center;
+	margin-top: 70px;
+}
+
+#admin-episodes-published h3 {
+	color: #445EF2;
+	margin-top: 50px;
+}
+
 /* Mise en forme de l'écriture et la modification d'épisodes (Back) */
 
 .write h1 {
@@ -439,19 +475,41 @@ footer p a:hover {
 	min-width: 400px;
 }
 
-.write__content {
-	min-width: 290px;
-}
-
-.write form .btn {
-	margin-bottom: 30px;
-}
-
-.write__complement {
+.update_title, .update_number {
+	color: #122459;
 	text-align: center;
 }
 
+.mce-content-body p {
+	line-height: 31px;
+}
+
+.tox-tinymce {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.episode-write__action {
+	text-align: center;
+    margin-top: 40px;
+    padding: 0px 15px;
+}
+
+.tox-editor-header {
+	font-family: 'Lato', sans-serif; 
+}
+
 /* Responsive */
+
+@media all and (max-width: 1230px) {
+
+	.tox-tinymce {
+		max-width: none;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+}
 
 @media all and (max-width: 991px) {
 
@@ -505,7 +563,7 @@ footer p a:hover {
 		padding: 15px;
 	}
 
-	#novel-episodes, #episode-read, #episode-look {
+	#novel-episodes, #episode-read, #subscription, #member-login, #episode-look, #episode-write, #episode-update, .admin-jf {
 		padding-top: 110px;
 	}
 	
@@ -542,6 +600,10 @@ footer p a:hover {
 	#episode-comments form textarea {
 		min-width: 290px;
 		height: 200px;
+	}
+
+	.table.mceLayout, .textarea.tinyMCE {
+		width: 95% !important;
 	}
 
 }

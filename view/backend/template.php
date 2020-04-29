@@ -12,8 +12,11 @@
         <script>
             tinymce.init({
             selector: '#content',
-            content_css : 'style.css',
-            height: 600,
+            content_css : 'public/css/style.css',
+            plugins: "autoresize",
+            autoresize_overflow_padding: 15,
+            autoresize_bottom_margin: 15,
+            min_height: 500,
             convert_fonts_to_spans : false,
             invalid_elements: "span"
             });

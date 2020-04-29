@@ -2,11 +2,13 @@
 session_start();
 
 // Chargement des classes
-require_once('controller/frontend.php');
-require_once('controller/backend.php');
+//require_once('controller/frontend.php');
+//require_once('controller/backend.php');
 
 use AnneFleurMarchat\JeanForteroche\Controller\FrontendController;
 use AnneFleurMarchat\JeanForteroche\Controller\BackendController;
+
+require('vendor/autoload.php');
 
 try {
 	$frontendController = new FrontendController();
