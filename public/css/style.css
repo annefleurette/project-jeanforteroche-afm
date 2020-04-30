@@ -167,7 +167,7 @@
 		margin-bottom: 30px;
 	}
 
-	.novel-episodes__list ul {
+	.novel-episodes__list ul:first-child {
 		margin-top: 50px;
 		padding-left: 0;
 	}
@@ -454,7 +454,11 @@ footer p a:hover {
 
 #admin-episodes-published h3 {
 	color: #445EF2;
-	margin-top: 50px;
+	margin-top: 70px;
+}
+
+.novel-episodes__list__buttons li {
+	text-align: right;
 }
 
 /* Mise en forme de l'écriture et la modification d'épisodes (Back) */
@@ -565,6 +569,15 @@ footer p a:hover {
 
 	#novel-episodes, #episode-read, #subscription, #member-login, #episode-look, #episode-write, #episode-update, .admin-jf {
 		padding-top: 110px;
+	}
+
+	.novel-episodes__list__buttons {
+		padding-left: 0;
+		padding-top: 15px;
+	}
+
+	.novel-episodes__list__buttons li {
+		text-align: center;
 	}
 	
 }
