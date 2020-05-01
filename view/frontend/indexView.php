@@ -40,7 +40,7 @@ ob_start();
         <?php
         }else{
         ?>
-            <p class="episode__no">Pas d'épisode publié</p>
+            <p class="data__no">Pas d'épisode publié</p>
         <?php
         }
         ?>  

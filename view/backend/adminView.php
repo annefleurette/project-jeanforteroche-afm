@@ -49,8 +49,8 @@ ob_start();
 														<p>Êtes-vous sûr(e) de vouloir supprimer cet épisode ?</p>
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-														<a href="index.php?action=delete_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Confirmer</a>
+														<button type="button" class="btn btn__no" data-dismiss="modal">Annuler</button>
+														<a href="index.php?action=delete_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
 													</div>
 												</div>
 											</div>
@@ -69,7 +69,7 @@ ob_start();
 	    <?php
 	    }else{
 	    ?>
-	        <p class="episode__no">Pas d'épisode publié</p>
+	        <p class="data__no">Pas d'épisode publié</p>
 	    <?php
 	    }
 	    ?>
@@ -112,8 +112,8 @@ ob_start();
 													<p>Êtes-vous sûr(e) de vouloir supprimer cet épisode ?</p>
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-													<a href="index.php?action=delete_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Confirmer</a>
+													<button type="button" class="btn btn__no" data-dismiss="modal">Annuler</button>
+													<a href="index.php?action=delete_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
 												</div>
 											</div>
 										</div>
@@ -129,7 +129,7 @@ ob_start();
 	    	<?php
 	    }else{
 	    ?>
-	        <p class="episode__no">Pas d'épisode enregistré</p>
+	        <p class="data__no">Pas d'épisode enregistré</p>
 	    <?php
 	    }
 	    ?>
@@ -166,7 +166,7 @@ ob_start();
 		<?php
         }else{
         ?>
-            <p class="episode__no">Pas de commentaire signalé</p>
+            <p class="data__no">Pas de commentaire signalé</p>
         <?php
         }  
         ?>
@@ -198,7 +198,7 @@ ob_start();
 		<?php
         }else{
         ?>
-            <p class="episode__no">Pas de commentaire publié</p>
+            <p class="data__no">Pas de commentaire publié</p>
         <?php
         }  
         ?>

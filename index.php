@@ -114,6 +114,6 @@ try {
 		$frontendController->displayEpisodesNews();
 	}
 }catch(Exception $e){
-    $errorMessage = $e->getMessage();
-    require('view/404error.php');
+	$errorMessage = $e->getMessage();
+	require('view/404error.php');
 }

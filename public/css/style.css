@@ -5,10 +5,11 @@
 	body {
 		margin: 0;
 		padding: 0;
-		color: #0D0D0D;
+		color: #122459;
 	}
 
 	.container-fluid {
+		margin-top: 76px;
 		background-color: #9BA8F2;
 	}
 
@@ -61,16 +62,13 @@
 		color: #445EF2;
 	}
 
-	ul {
-		list-style: none;
-	}
-
 	a:hover {
 		color: #445EF2;
+		text-decoration: none;
 	}
 
-	a:hover {
-		text-decoration: none;
+	ul {
+		list-style: none;
 	}
 
 	/* Boutons */
@@ -103,13 +101,25 @@
 		.btn__read {
 			color: #445EF2;
 			border: 1px #445EF2 solid;
-			
 		}
 
 		.btn__read:hover{
 			color: #FFFFFF;
 			border: 1px #FFFFFF solid;
 			background-color: #445EF2;
+		}
+
+		/* Actions moins souhaitées : supprimer, alerter  */
+
+		.btn__alert {
+			color: #9BA8F2;
+			border: 1px #9BA8F2 solid;
+		}
+	
+		.btn__alert:hover{
+			color: #FFFFFF;
+			border: 1px #FFFFFF solid;
+			background-color: #9BA8F2;
 		}
 
 		/* Fixation de taille, boutons regoupés */
@@ -135,6 +145,14 @@
 			margin-top: 2px;
 		}
 
+		.btn__prev {
+			margin-right: 15px;
+		}
+	
+		.btn__next {
+			margin-left: 15px;
+		}
+
 	/* Icones et signes */
 
 	.fas {
@@ -151,11 +169,11 @@
 
 	/* Blocs */
 
-	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification, .admin-jf {
-		padding-top: 230px;
+	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification, .admin-jf, #error404 {
+		padding-top: 154px;
 	}
 
-	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification, #admin-comments {
+	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification, #admin-comments, #error404 {
 		margin-bottom: 50px;
 	}
 
@@ -207,11 +225,42 @@
 		text-align: center;
 	}
 
-	.episode__no {
+	.data__no {
 		text-align: center;
 		margin-top: 54px;
 		margin-bottom: 50px;
 		padding: 0 15px;
+	}
+
+	.episode__no {
+		padding: 150px 0 150px 0;
+	}
+
+	.page__no {
+		margin-bottom: 154px;
+	}
+
+	/* Modales */
+
+	.modal-title {
+		font-family: 'Lato', sans-serif;
+		color: #be96cc;
+	}
+
+	.modal-footer .btn__no {
+		color: #445EF2;
+		background-color: transparent;
+		border: 1px #445EF2 solid;
+	}
+
+	.modal-footer .btn__ok {
+		color: #FFFFFF;
+		background-color: #445EF2;
+		border: 1px #445EF2 solid;
+	}
+
+	.close span {
+		color: #be96cc;
 	}
 
 /* Mise en forme du header */
@@ -295,7 +344,7 @@ footer p a:hover {
 	/* Mise en forme de la section de présentation du roman (Front) */
 
 	#novel-presentation {
-		padding: 200px 15px;
+		padding: 124px 15px;
 		background: url("../images/novel.png") no-repeat;
 		background-size: cover;
 	}
@@ -389,14 +438,6 @@ footer p a:hover {
 		padding: 0px 15px;
 	}
 
-	.btn__prev {
-		margin-right: 15px;
-	}
-
-	.btn__next {
-		margin-left: 15px;
-	}
-
 	/* Lecture des commentaires (Front & Back) */
 
 	#episode-comments ul, #admin-comments-alert ul, #admin-comments-global ul {
@@ -413,17 +454,6 @@ footer p a:hover {
 	#episode-comments ul article p, #admin-comments-alert ul article p, #admin-comments-global ul article p {
 		padding: 0 15px 15px 15px;
 		text-align: center;
-	}
-
-	.btn__alert {
-		color: #9BA8F2;
-		border: 1px #9BA8F2 solid;
-	}
-
-	.btn__alert:hover{
-		color: #FFFFFF;
-		border: 1px #FFFFFF solid;
-		background-color: #9BA8F2;
 	}
 
 	/* Ecriture des commentaires (Front) */
@@ -608,15 +638,15 @@ footer p a:hover {
 	}
 
 	#novel-presentation {
-		padding: 80px 15px 50px 15px;
+		padding: 24px 15px 50px 15px;
 	}
 	
 	#novel-author {
 		padding: 15px;
 	}
 
-	#novel-episodes, #episode-read, #subscription, #member-login, #episode-look, #episode-write, #episode-update, .admin-jf {
-		padding-top: 110px;
+	#novel-episodes, #episode-read, #subscription, #member-login, #episode-look, #episode-write, #episode-update, .admin-jf, #error404 {
+		padding-top: 54px;
 	}
 
 	.novel-episodes__list__buttons {
@@ -628,10 +658,18 @@ footer p a:hover {
 		text-align: center;
 		padding-left: 0;
 	}
+
+	.page__no {
+		margin-bottom: 54px;
+	}
 	
 }
 
 @media all and (max-width: 991px) {
+
+	.container-fluid {
+		margin-top: 56px;
+	}
 
 	#episode-comments form textarea {
 		min-width: 450px;

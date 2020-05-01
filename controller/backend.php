@@ -142,7 +142,7 @@ class BackendController {
                 $postnumber = htmlspecialchars($_POST['number']);
                 $posttitle = htmlspecialchars($_POST['title']);
                 $getid = htmlspecialchars($_GET['id']);
-                $episode_unitary_published = $episodeManager->getEpisodePublished($_POST['number']);
+                $episode_unitary_published = $episodeManager->getEpisodePublished($postnumber);
                 $current_episode = intval($postnumber);
                 $status_published = "published";
                 if (empty($episode_unitary_published) AND ($current_episode == $count_episode_publishable))

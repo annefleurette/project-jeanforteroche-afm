@@ -18,8 +18,8 @@
                     <p>Êtes-vous sûr(e) de vouloir supprimer votre compte ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    <a href="index.php?action=unsubscribe&amp;pseudo=<?php echo $_SESSION['pseudo']; ?>" class="btn btn__admin">Confirmer</a>
+                    <button type="button" class="btn btn__no" data-dismiss="modal">Annuler</button>
+                    <a href="index.php?action=unsubscribe&amp;pseudo=<?php echo $_SESSION['pseudo']; ?>" class="btn btn__ok">Confirmer</a>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ ob_start();
     if(empty($nbepisodes))
     { // S'il n'y a pas d'épisode publié
     ?>
-        <p class="episode__no">Jean Forteroche n'a pas encore publié d'épisode</p>
+        <p class="data__no">Jean Forteroche n'a pas encore publié d'épisode</p>
     <?php
     }else{
     // Si des épisodes publiés existent bien

@@ -2,9 +2,6 @@
 $head_title = 'Billet simple pour l\'Alaska - Lecture';
 $head_description = 'Un homme malade explore l\'Alaska pendant le dernier mois qui lui reste à vivre.';
 ob_start();
-?>
-
-<?php
 if (!empty($episode_unitary_published))
 {
 ?>
@@ -73,7 +70,7 @@ if (!empty($episode_unitary_published))
     <?php
     }else{
     ?>
-        <p class="episode__no">Pas de commentaire</p>
+        <p class="data__no">Pas de commentaire</p>
     <?php     
     }
     ?>
@@ -83,7 +80,7 @@ if (!empty($episode_unitary_published))
         if(!isset($_SESSION['pseudo']))
         {
         ?>
-            <p class="episode__no">Vous devez être connecté(e) pour laisser un commentaire. <a href="index.php?action=subscription">S'inscrire</a> ou <a href="index.php?action=login">se connecter</a>.</p>
+            <p class="data__no">Vous devez être connecté(e) pour laisser un commentaire. <a href="index.php?action=subscription">S'inscrire</a> ou <a href="index.php?action=login">se connecter</a>.</p>
         <?php
         }else{
         ?>
@@ -103,8 +100,10 @@ if (!empty($episode_unitary_published))
 <?php
 }else{
 ?>
-    <p>L'épisode que vous cherchez n'existe pas !</p>
-    <a href="index.php?action=episode">Revenir aux épisodes</a>
+    <section id="error404">
+        <h1>Erreur 404</h1>
+        <p class="data__no page__no">Cette page n'existe pas !</p>
+    </section>
 <?php
 }
 $body_content = ob_get_clean();
