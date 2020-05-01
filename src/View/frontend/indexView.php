@@ -9,7 +9,7 @@ ob_start();
             <h1>BILLET SIMPLE POUR L'ALASKA</h1>
             <p><strong>Un homme malade explore l'Alaska pendant le dernier mois qui lui reste à vivre<br />Un voyage initiatique à la découverte de soi</strong></p>
             <p class="novel-presentation__text__new">Le dernier roman de Jean Forteroche</p>
-            <p><a href="index.php?action=episode&amp;number=<?php echo $episode_first['episode_number']; ?>" class="btn btn__CTA">Démarrer la lecture !</a></p>
+            <p><a href="index.php?action=episode&amp;number=<?php echo $episode_first['episode_number']; ?>" class="btn btn__CTA btn__SizePlus">Démarrer la lecture !</a></p>
         </div> 
     </div>                
 </section>

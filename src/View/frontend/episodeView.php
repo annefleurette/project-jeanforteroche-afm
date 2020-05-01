@@ -32,7 +32,7 @@ if (!empty($episode_unitary_published))
                 <?php
                 }else{
                 ?>
-                    <div class="episode-read__pagination">
+                    <div class="btn__together episode-read__pagination">
                         <a class="btn btn__read btn__prev" href="index.php?action=episode&amp;number=<?php echo $episode_before; ?>">Episode précédent</a>
                         <a class="btn btn__read btn__next" href="index.php?action=episode&amp;number=<?php echo $episode_next; ?>">Episode suivant</a>
                     </div>

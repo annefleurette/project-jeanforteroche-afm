@@ -1,3 +1,5 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 /* Général */
 
 	/* Contenants */
@@ -21,11 +23,15 @@
 		font-weight: 400;
 		color: #122459;
 		text-align: center;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 	h2, h3, h4 {
 		font-family: 'Lato', sans-serif;
 		text-align: center;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 	h2, h3 {
@@ -79,6 +85,7 @@
 		border-radius: 5px;
 		padding: 10px 20px;
 		font-weight: 700;
+		width: 200px;
 	}
 
 		/* Call to Action */
@@ -124,14 +131,6 @@
 
 		/* Fixation de taille, boutons regoupés */
 
-		.btn__width-fixed__episodes {
-			width: 113px;
-		}
-
-		.btn__width-fixed__comments {
-			width: 200px;
-		}
-
 		.btn__top {
 			margin-bottom: 2px;
 		}
@@ -153,6 +152,15 @@
 			margin-left: 15px;
 		}
 
+		.btn__together {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		.btn__SizePlus {
+			width: 300px;
+		}
+
 	/* Icones et signes */
 
 	.fas {
@@ -170,7 +178,7 @@
 	/* Blocs */
 
 	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification, .admin-jf, #error404 {
-		padding-top: 158px;
+		padding-top: 118px;
 	}
 
 	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification, #admin-comments, #error404 {
@@ -178,16 +186,26 @@
 	}
 
 	.novel-section article {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
+		-webkit-box-pack: justify;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between;
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center;
 		margin: 20px 0;
 		padding: 40px;
 		background-color: #FFFFFF;
 		border: 1px #FFFFFF solid; 
 		border-radius: 5px;
-		box-shadow: 0 0 3px 0 #445EF2;
+		-webkit-box-shadow: 0 0 3px 0 #445EF2;
+		        box-shadow: 0 0 3px 0 #445EF2;
 		border: 1px #FFFFFF solid;
 	}
 
@@ -218,7 +236,9 @@
 	}
 
 	.novel-episodes__list li {
-		justify-content: center;
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
 	}
 
 	.novel-episodes__list p {
@@ -267,7 +287,8 @@
 
 .navbar {
 	font-family: 'Lato', sans-serif;
-	box-shadow: 0 0 2px 0 #445EF2;
+	-webkit-box-shadow: 0 0 2px 0 #445EF2;
+	        box-shadow: 0 0 2px 0 #445EF2;
 	background-color: #FFFFFF;
 }
 
@@ -446,9 +467,16 @@ footer p a:hover {
 	}
 	
 	#episode-comments ul article, #admin-comments-alert ul article, #admin-comments-global ul article {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
 	}
 
 	#episode-comments ul article p, #admin-comments-alert ul article p, #admin-comments-global ul article p {
@@ -569,6 +597,8 @@ footer p a:hover {
 .tox-tinymce {
 	max-width: 1200px;
 	margin: auto;
+	border-color: #9BA8F2!important;
+	padding-bottom: 40px;
 }
 
 .episode-write__action {
@@ -596,11 +626,11 @@ footer p a:hover {
 @media all and (max-width: 991px) {
 
 	h1 {
-		font-size: 3em;
+		font-size: 2.8em;
 	}
 
 	h2 {
-		font-size: 1.8em;
+		font-size: 1.6em;
 	}
 	
 	.navbar-expand-lg .navbar-nav .right-part .nav-link {
@@ -628,9 +658,16 @@ footer p a:hover {
 	}
 
 	.novel-section article {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
 	}
 
 	.novel-section article p, .novel-section article h3 {
@@ -685,6 +722,24 @@ footer p a:hover {
 	}
 }
 
+@media all and (max-width: 464px) {
+
+	.btn__together input, .btn__together a {
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.btn__prev {
+		margin-bottom: 2px;
+	}
+
+	.btn__next {
+		margin-top: 2px;
+	}
+}
+
 @media all and (max-width: 383px) {
 
 	.btn__prev {
@@ -704,6 +759,10 @@ footer p a:hover {
 
 	.table.mceLayout, .textarea.tinyMCE {
 		width: 95% !important;
+	}
+
+	.write__title {
+		min-width: 290px;
 	}
 
 }

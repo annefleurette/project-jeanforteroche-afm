@@ -41,7 +41,7 @@ if (!empty($episode_unitary))
                     <label for="content">Contenu de l'épisode</label><br />
                     <textarea id="content" name="content"><?php echo $episode_unitary['episode_content']; ?></textarea>
                 </p>
-                <p>
+                <p class="btn__together">
                     <input class="btn btn__read btn__prev" type="submit" name="save" value="Enregistrer">
                     <input class="btn btn__read btn__next" type="submit" name="publish" value="Publier">
                 </p>

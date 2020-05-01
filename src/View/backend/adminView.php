@@ -9,7 +9,7 @@ ob_start();
 	<section id="admin-episodes-published" class="novel-section"> <!-- Section qui liste les épisodes publiés -->
 		<div id="admin-episodes-published__flag"></div>
 		<h3>Episodes publiés</h3>
-		<p class="new-episode"><a href="index.php?action=write" class="btn btn__CTA"><i class="fas fa-plus"></i> Ajouter un nouvel épisode</a></p>
+		<p class="new-episode"><a href="index.php?action=write" class="btn btn__CTA btn__SizePlus"><i class="fas fa-plus"></i> Ajouter un nouvel épisode</a></p>
 	    <?php          
 	    if($nbepisode_published > 0)
 	    {
@@ -26,9 +26,9 @@ ob_start();
 							<h4><?php echo $published_episode['episode_title']; ?></h4>
 							<ul class="novel-episodes__list__buttons">
 								<!-- Lire l'épisode -->
-								<li><a class="btn btn__read btn__width-fixed__episodes btn__top" href="index.php?action=episode&amp;number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
+								<li><a class="btn btn__read btn__top" href="index.php?action=episode&amp;number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
 								<!-- Modifier l'épisode -->
-								<li><a class="btn btn__read btn__width-fixed__episodes btn__middle" href="index.php?action=update_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
+								<li><a class="btn btn__read btn__middle" href="index.php?action=update_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
 								<!-- Supprimer l'épisode avec demande de confirmation - On ne peut supprimer que le dernier épisode publié -->
 								<?php
 								if($published_episode['episode_number'] == $nbepisode_published)
@@ -155,8 +155,8 @@ ob_start();
 							<p>Episode n°<?php echo $alert_comment['episod_number_episodes']; ?>
 							<p><strong><?php echo $alert_comment['pseudo_members']; ?></strong> le <?php echo $alert_comment['date_comment_fr']; ?></p>
 							<p><?php echo nl2br($alert_comment['comment_comments']); ?></p>
-							<a href="index.php?action=alert_cancel&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__read btn__width-fixed__comments btn__top">Annuler le signalement</a>
-							<a href="index.php?action=delete_comment&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__alert btn__width-fixed__comments btn__bottom">Supprimer</a>
+							<a href="index.php?action=alert_cancel&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__read btn__top">Annuler le signalement</a>
+							<a href="index.php?action=delete_comment&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__alert btn__bottom">Supprimer</a>
 						</article>
 					</li>
 				<?php
