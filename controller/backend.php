@@ -156,7 +156,7 @@ class BackendController {
             }elseif(!isset($_POST['number']) AND isset($_POST['title']) AND isset($_POST['content']))
             {
                 // Actualisation de l'épisode déjà publié
-                $postitle = htmlspecialchars($_POST['title']);
+                $posttitle = htmlspecialchars($_POST['title']);
                 $getid = htmlspecialchars($_GET['id']);
                 $update_episode_published = $episodeManager->updateEpisodePublished($posttitle, $_POST['content'], $getid);
                 header('Location: index.php?action=admin');

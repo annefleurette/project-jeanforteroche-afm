@@ -25,7 +25,6 @@ if (!empty($lookepisode))
         <p class="data__no page__no">Cette page n'existe pas !</p>
     </section>
 <?php
-<?php
 }
 $body_content = ob_get_clean();
 require('template.php');

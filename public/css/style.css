@@ -9,7 +9,7 @@
 	}
 
 	.container-fluid {
-		margin-top: 76px;
+		margin-top: 72px;
 		background-color: #9BA8F2;
 	}
 
@@ -170,7 +170,7 @@
 	/* Blocs */
 
 	#novel-episodes, #episode-read, #episode-look, #episode-write, #episode-update, .identification, .admin-jf, #error404 {
-		padding-top: 154px;
+		padding-top: 158px;
 	}
 
 	#novel-episodes, #episode-look, #episode-write, #episode-update, #novel-author, #episode-comments, .identification, #admin-comments, #error404 {
@@ -344,7 +344,7 @@ footer p a:hover {
 	/* Mise en forme de la section de présentation du roman (Front) */
 
 	#novel-presentation {
-		padding: 124px 15px;
+		padding: 128px 15px;
 		background: url("../images/novel.png") no-repeat;
 		background-size: cover;
 	}
