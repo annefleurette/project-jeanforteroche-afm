@@ -98,7 +98,7 @@
 			color:  #122459;
 		}
 
-		/* Lecture */
+		/* Général : lecture, aperçu, modification */
 
 		.btn__read {
 			color: #445EF2;
@@ -110,6 +110,29 @@
 			color: #FFFFFF;
 			border: 1px #FFFFFF solid;
 			background-color: #445EF2;
+		}
+
+		/* Fixation de taille, boutons regoupés */
+
+		.btn__width-fixed__episodes {
+			width: 113px;
+		}
+
+		.btn__width-fixed__comments {
+			width: 200px;
+		}
+
+		.btn__top {
+			margin-bottom: 2px;
+		}
+
+		.btn__middle {
+			margin-top: 2px;
+			margin-bottom: 2px;
+		}
+
+		.btn__bottom {
+			margin-top: 2px;
 		}
 
 	/* Icones et signes */
@@ -169,6 +192,10 @@
 
 	.novel-episodes__list ul:first-child {
 		margin-top: 50px;
+		padding-left: 0;
+	}
+
+	.novel-episodes__list__buttons {
 		padding-left: 0;
 	}
 
@@ -321,6 +348,12 @@ footer p a:hover {
 	margin: auto;
 }
 
+.novel-episodes__welcome {
+	margin-top: 50px;
+	text-align: center;
+	font-size: 1.1em;
+}
+
 /* Mise en forme de la lecture unitaire d'un épisode (Front & Back) */
 
 	/* Lecture de l'épisode (Front) + Aperçu d'un épisode (Back) */
@@ -364,20 +397,20 @@ footer p a:hover {
 		margin-left: 15px;
 	}
 
-	/* Lecture des commentaires (Front) */
+	/* Lecture des commentaires (Front & Back) */
 
-	#episode-comments ul {
+	#episode-comments ul, #admin-comments-alert ul, #admin-comments-global ul {
 		padding: 0;
 		margin-bottom: 50px;
 	}
 	
-	#episode-comments ul article {
+	#episode-comments ul article, #admin-comments-alert ul article, #admin-comments-global ul article {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
 
-	#episode-comments ul article p {
+	#episode-comments ul article p, #admin-comments-alert ul article p, #admin-comments-global ul article p {
 		padding: 0 15px 15px 15px;
 		text-align: center;
 	}
@@ -439,27 +472,42 @@ footer p a:hover {
 	margin-bottom: 38px;
 }
 
-#admin-episodes {
-	margin-bottom: 80px;
-}
+	/* Mise en forme du bloc épisodes (Back) */
 
-#admin-episodes h2, #admin-comments h2 {
-	margin-bottom: 30px;
-}
+	#admin-episodes-published, #admin-episodes-inprogress, #admin-comments-alert, #admin-comments-global {
+		position: relative;
+	}
 
-#admin-episodes-published .new-episode {
-	text-align: center;
-	margin-top: 70px;
-}
+	#admin-episodes-published__flag, #admin-episodes-inprogress__flag, #admin-comments-alert__flag, #admin-comments-global__flag {
+		position: absolute;
+		top: -8em;
+	}
 
-#admin-episodes-published h3 {
-	color: #445EF2;
-	margin-top: 70px;
-}
+	#admin-episodes {
+		margin-bottom: 80px;
+	}
 
-.novel-episodes__list__buttons li {
-	text-align: right;
-}
+	#admin-episodes h2, #admin-comments h2 {
+		margin-bottom: 30px;
+	}
+
+	#admin-episodes-published .new-episode {
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	#admin-episodes-published h3, #admin-episodes-inprogress h3, #admin-comments-alert h3, #admin-comments-global h3 {
+		font-family: 'Concert One', cursive;
+		font-size: 2em;
+		color: #445EF2;
+		margin-top: 70px;
+	}
+
+	/* Mise en forme du bloc commentaires (Back) */
+
+	#admin-comments-alert ul, #admin-comments-global ul{
+		margin-top: 50px;
+	}
 
 /* Mise en forme de l'écriture et la modification d'épisodes (Back) */
 
@@ -578,6 +626,7 @@ footer p a:hover {
 
 	.novel-episodes__list__buttons li {
 		text-align: center;
+		padding-left: 0;
 	}
 	
 }

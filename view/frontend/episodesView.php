@@ -2,17 +2,17 @@
 $head_title = 'Billet simple pour l\'Alaska - Les épisodes du roman';
 $head_description = 'Découvez et lisez épisode par épisode le nouveau roman de Jean Forteroche, Billet simple pour l\'Alaska.';
 ob_start();
-if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
-?>
-    <p>Bonjour <?php echo $_SESSION['pseudo']; ?>, content de vous revoir !</p>
-<?php
-}
 ?>
 <section id="novel-episodes" class="novel-section"> <!-- Section qui affiche tous les épisodes -->
     <h1>BILLET SIMPLE POUR L'ALASKA</h1>
     <h2>Tous les épisodes publiés</h2>
     <hr />
+    <?php    
+    if (isset($_SESSION['pseudo']) AND $_SESSION['type'] == "reader") {
+    ?>
+        <p class="novel-episodes__welcome">Bonjour <strong><?php echo $_SESSION['pseudo']; ?></strong>, content de vous revoir !</p>
     <?php
+    }
     if(empty($nbepisodes))
     { // S'il n'y a pas d'épisode publié
     ?>
