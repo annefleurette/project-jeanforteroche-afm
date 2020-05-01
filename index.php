@@ -113,5 +113,5 @@ try {
 	}
 }catch(Exception $e){
 	$errorMessage = $e->getMessage();
-	require('View/404error.php');
+	require('src/View/404error.php');
 }
