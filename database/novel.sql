@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 01 mai 2020 à 15:17
+-- Généré le :  mar. 05 mai 2020 à 12:14
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.4.2
 
@@ -45,7 +45,8 @@ INSERT INTO `comments` (`id`, `id_episode`, `id_pseudo`, `comment`, `date_commen
 (4, 62, 15, 'bluuuuuuurg', '2020-04-20 17:38:49', 'oui'),
 (5, 63, 9, 'J\'espère que cet épisode vous plaira !', '2020-04-24 12:45:49', 'non'),
 (7, 63, 9, 'Alors ?', '2020-04-24 12:47:58', 'non'),
-(8, 63, 14, 'J\'adore !', '2020-04-28 11:07:55', 'non');
+(8, 63, 14, 'J\'adore !', '2020-04-28 11:07:55', 'non'),
+(10, 62, 15, 'bouhhhhhhhhh', '2020-05-04 10:37:19', 'non');
 
 -- --------------------------------------------------------
 
@@ -66,11 +67,11 @@ CREATE TABLE `episodes` (
 --
 
 INSERT INTO `episodes` (`id`, `episode_number`, `episode_title`, `episode_content`, `episode_status`) VALUES
-(62, 1, 'Le grand départ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et tortor consectetur nulla rhoncus fermentum non vel nunc. Maecenas in risus vel felis consequat varius. Vestibulum in pellentesque massa. Aliquam nisl sem, iaculis in aliquet eu, gravida eu urna. Nulla at ipsum diam. Nulla at fringilla tortor, ut consequat ligula. Cras iaculis nec dolor vitae pretium. Phasellus cursus iaculis hendrerit. Nulla magna nisi, pretium vel bibendum a, gravida in metus. Integer sit amet felis enim. Cras massa ex, sodales at suscipit posuere, rhoncus et dolor. Nunc mollis, metus eu fermentum bibendum, ante dui condimentum enim, in cursus dolor enim sed eros. Nulla ut iaculis odio.</p>', 'published'),
-(63, 2, 'Matinée ensoleillée', '<p>Suspendisse sit amet suscipit sem, vitae feugiat orci. Pellentesque vitae sapien dictum, posuere ipsum at, pulvinar lorem. In hac habitasse platea dictumst. Nam ac egestas magna, eget malesuada tortor. Etiam consequat orci auctor magna aliquam rhoncus. Integer sodales malesuada viverra. Sed ullamcorper ornare enim. Pellentesque interdum placerat eros, eu elementum libero mattis eu. Praesent sit amet sollicitudin magna, nec blandit nisi. Phasellus sit amet iaculis lacus. Fusce vulputate, leo nec bibendum consectetur, metus velit tincidunt enim, eu malesuada erat augue elementum dui. Sed condimentum tincidunt massa. Proin placerat laoreet dolor, sit amet malesuada lectus venenatis eget.</p>', 'published'),
-(64, 3, 'Après-midi sous le vent', '<p>Nulla facilisi. Sed efficitur sem eu magna maximus, quis vestibulum nulla elementum. Morbi neque ligula, vestibulum in imperdiet in, suscipit tincidunt tellus. Nullam semper non purus sit amet placerat. Ut faucibus ullamcorper mi in mollis. Maecenas iaculis est ipsum, non luctus odio euismod non. Quisque lacinia lacus malesuada maximus dapibus. Proin viverra ante eu orci volutpat luctus. Vestibulum maximus vitae odio at pretium. Nulla ex nulla, ornare eget sodales ut, rutrum eu turpis.</p>', 'published'),
-(69, 4, 'Goûter pluvieux', '<p>Proin venenatis auctor purus a viverra. Donec efficitur faucibus mattis. Cras cursus, velit ut sagittis porta, ex nisl tincidunt arcu, vel scelerisque diam metus non nisl. Duis eget massa dolor. Mauris mollis urna quis urna tristique, gravida eleifend nisl aliquet. Suspendisse vitae finibus sem, eget dapibus neque. Aliquam dignissim tempus faucibus. Etiam sed neque est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras finibus, augue non vehicula semper, ex nunc semper nulla, in pulvinar dui ante vitae nibh. Nam lacinia porta luctus. Etiam varius sed lacus ac pharetra. Sed accumsan neque est, a tempor nunc bibendum eu. Aliquam cursus justo sit amet elit gravida, suscipit sagittis eros semper.</p>', 'published'),
-(70, 5, 'Soirée hivernale', '<p>Praesent risus lacus, tristique vel est vel, maximus laoreet leo. Quisque ut purus nibh. Cras semper, neque sed consequat pretium, sem nisi interdum arcu, et fermentum nulla nisl id diam. Praesent congue auctor risus rutrum ultrices. Proin magna odio, semper quis risus sed, posuere consequat ex. Pellentesque odio urna, maximus iaculis mauris et, mollis vehicula dolor. Etiam laoreet augue metus, sit amet iaculis sapien sollicitudin et. Sed id leo a orci pulvinar lacinia. Duis ante lectus, malesuada at porttitor vitae, laoreet id turpis.</p>', 'inprogress');
+(62, 1, 'Le grand départ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et tortor consectetur nulla rhoncus fermentum non vel nunc. Maecenas in risus vel felis consequat varius. Vestibulum in pellentesque massa. Aliquam nisl sem, iaculis in aliquet eu, gravida eu urna. Nulla at ipsum diam. Nulla at fringilla tortor, ut consequat ligula. Cras iaculis nec dolor vitae pretium. Phasellus cursus iaculis hendrerit. Nulla magna nisi, pretium vel bibendum a, gravida in metus. Integer sit amet felis enim. Cras massa ex, sodales at suscipit posuere, rhoncus et dolor. Nunc mollis, metus eu fermentum bibendum, ante dui condimentum enim, in cursus dolor enim sed eros. Nulla ut iaculis odio.', 'published'),
+(63, 2, 'Matinée ensoleillée', 'Suspendisse sit amet suscipit sem, vitae feugiat orci. Pellentesque vitae sapien dictum, posuere ipsum at, pulvinar lorem. In hac habitasse platea dictumst. Nam ac egestas magna, eget malesuada tortor. Etiam consequat orci auctor magna aliquam rhoncus. Integer sodales malesuada viverra. Sed ullamcorper ornare enim. Pellentesque interdum placerat eros, eu elementum libero mattis eu. Praesent sit amet sollicitudin magna, nec blandit nisi. Phasellus sit amet iaculis lacus. Fusce vulputate, leo nec bibendum consectetur, metus velit tincidunt enim, eu malesuada erat augue elementum dui. Sed condimentum tincidunt massa. Proin placerat laoreet dolor, sit amet malesuada lectus venenatis eget.', 'published'),
+(64, 3, 'Après-midi sous le vent', 'Nulla facilisi. Sed efficitur sem eu magna maximus, quis vestibulum nulla elementum. Morbi neque ligula, vestibulum in imperdiet in, suscipit tincidunt tellus. Nullam semper non purus sit amet placerat. Ut faucibus ullamcorper mi in mollis. Maecenas iaculis est ipsum, non luctus odio euismod non. Quisque lacinia lacus malesuada maximus dapibus. Proin viverra ante eu orci volutpat luctus. Vestibulum maximus vitae odio at pretium. Nulla ex nulla, ornare eget sodales ut, rutrum eu turpis.', 'published'),
+(69, 4, 'Goûter pluvieux', 'Proin venenatis auctor purus a viverra. Donec efficitur faucibus mattis. Cras cursus, velit ut sagittis porta, ex nisl tincidunt arcu, vel scelerisque diam metus non nisl. Duis eget massa dolor. Mauris mollis urna quis urna tristique, gravida eleifend nisl aliquet. Suspendisse vitae finibus sem, eget dapibus neque. Aliquam dignissim tempus faucibus. Etiam sed neque est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras finibus, augue non vehicula semper, ex nunc semper nulla, in pulvinar dui ante vitae nibh. Nam lacinia porta luctus. Etiam varius sed lacus ac pharetra. Sed accumsan neque est, a tempor nunc bibendum eu. Aliquam cursus justo sit amet elit gravida, suscipit sagittis eros semper.', 'published'),
+(70, 5, 'Soirée hivernale', 'Praesent risus lacus, tristique vel est vel, maximus laoreet leo. Quisque ut purus nibh. Cras semper, neque sed consequat pretium, sem nisi interdum arcu, et fermentum nulla nisl id diam. Praesent congue auctor risus rutrum ultrices. Proin magna odio, semper quis risus sed, posuere consequat ex. Pellentesque odio urna, maximus iaculis mauris et, mollis vehicula dolor. Etiam laoreet augue metus, sit amet iaculis sapien sollicitudin et. Sed id leo a orci pulvinar lacinia. Duis ante lectus, malesuada at porttitor vitae, laoreet id turpis.', 'inprogress');
 
 -- --------------------------------------------------------
 
@@ -128,19 +129,19 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT pour la table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Contraintes pour les tables déchargées
