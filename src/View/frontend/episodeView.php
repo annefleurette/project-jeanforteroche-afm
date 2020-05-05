@@ -11,7 +11,7 @@ if (!empty($episode_unitary_published))
         <hr />
         <div class="row justify-content-center no-gutters">
             <div class="col-md-8 col-sm-10 col-xs-12">
-                <div class="episode-read__content"><?php echo $episode_unitary_published['episode_content']; ?></div>
+                <div class="episode-read__content"><p><?php echo $episode_unitary_published['episode_content']; ?></p></div>
                 <?php // Affichage des boutons épisodes précédents/suivants
                 if($episode_current <= 1)
                 {

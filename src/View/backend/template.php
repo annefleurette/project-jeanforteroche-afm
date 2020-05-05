@@ -13,12 +13,16 @@
             tinymce.init({
             selector: '#content',
             content_css : 'public/css/style.css',
+            inline_styles : false,
             plugins: "autoresize",
             autoresize_overflow_padding: 15,
             autoresize_bottom_margin: 15,
             min_height: 500,
             convert_fonts_to_spans : false,
-            invalid_elements: "span"
+            invalid_elements: "span, p, a",
+            forced_root_block : false,
+            force_br_newlines : true,
+            force_p_newlines : false
             });
         </script>
     </head>

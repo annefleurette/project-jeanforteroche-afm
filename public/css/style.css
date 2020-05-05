@@ -590,8 +590,11 @@ footer p a:hover {
 	text-align: center;
 }
 
-.mce-content-body p {
+.mce-content-body {
 	line-height: 31px;
+	font-family: 'Lato', sans-serif;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .tox-tinymce {
