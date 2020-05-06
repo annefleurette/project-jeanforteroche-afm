@@ -9,7 +9,7 @@ ob_start();
             <h1>BILLET SIMPLE POUR L'ALASKA</h1>
             <p><strong>Un homme malade explore l'Alaska pendant le dernier mois qui lui reste à vivre<br />Un voyage initiatique à la découverte de soi</strong></p>
             <p class="novel-presentation__text__new">Le dernier roman de Jean Forteroche</p>
-            <p><a href="index.php?action=episode&amp;number=<?php echo $episode_first['episode_number']; ?>" class="btn btn__CTA btn__SizePlus">Démarrer la lecture !</a></p>
+            <p><a href="episode/number-<?php echo $episode_first['episode_number']; ?>" class="btn btn__CTA btn__SizePlus">Démarrer la lecture !</a></p>
         </div> 
     </div>                
 </section>
@@ -30,7 +30,7 @@ ob_start();
                         <article class="col-md-8 col-sm-10 col-xs-12">
                             <p>Episode n°<?php echo $last_episode_three['episode_number']; ?></p>
                             <h3><?php echo $last_episode_three['episode_title']; ?></h3>
-                            <a href="index.php?action=episode&amp;number=<?php echo $last_episode_three['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
+                            <a href="episode/number-<?php echo $last_episode_three['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
                         </article>
                     </li>
                 <?php
@@ -44,7 +44,7 @@ ob_start();
         <?php
         }
         ?>  
-        <p><a href="index.php?action=episode" class="btn btn__CTA">Voir tous les épisodes</a></p>
+        <p><a href="episode" class="btn btn__CTA">Voir tous les épisodes</a></p>
     </div>
 </section>
 <section id="novel-author" class="novel-section"> <!-- Section qui présente l'auteur -->

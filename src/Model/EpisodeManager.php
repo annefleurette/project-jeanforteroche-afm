@@ -42,7 +42,7 @@ class EpisodeManager extends Manager
 		return $episode_unitary;
 	}
 
-	// On récupère un épisode unitaire publié via son numéro d'épisode
+	// On récupère un épisode unitaire publié via son number
 	public function getEpisodePublished($number)
 	{
 		$db = $this->dbConnect();

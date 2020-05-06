@@ -10,7 +10,7 @@ ob_start();
     <?php
     if(!isset($_SESSION['pseudo'])) { //On vérifie que la personne n'est pas déjà connectée
     ?>
-        <form action="index.php?action=login_post" method="post">
+        <form action="login_post" method="post">
             <p>
                 <label for="email">Identifiant email</label><br />
                 <input type="text" id="email" name="email" required>

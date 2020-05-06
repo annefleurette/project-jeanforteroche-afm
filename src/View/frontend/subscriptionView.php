@@ -10,7 +10,7 @@ ob_start();
     <?php
     if(!isset($_SESSION['pseudo'])) { //On vérifie que la personne n'est pas déjà connectée 
     ?>
-        <form action="index.php?action=subscription_post" method="post">
+        <form action="subscription_post" method="post">
             <p>
                 <label for="pseudo">Pseudo</label><br />
                 <input type="text" id="pseudo" name="pseudo" minlength = "4" maxlength="20" required>

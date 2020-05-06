@@ -30,7 +30,7 @@ ob_start();
                         <article class="col-md-8 col-sm-10 col-xs-12">
                             <p>Episode n°<?php echo $episodes_all['episode_number']; ?></p>
                             <h3><?php echo $episodes_all['episode_title']; ?></h3>
-                            <a href="index.php?action=episode&amp;number=<?php echo $episodes_all['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
+                            <a href="episode/number-<?php echo $episodes_all['episode_number']; ?>" class="btn btn__read">Lire l'épisode</a>
                         </article>
                     </li>  
                 <?php
@@ -43,7 +43,7 @@ ob_start();
                 for($pages=1 ; $pages<= $reading_pages ; $pages++)
                 {
                 ?>
-                    <a href="index.php?action=episode&amp;page=<?php echo $pages; ?>" style="margin:2px;"><?php echo $pages; ?></a>
+                    <a href="episode/page-<?php echo $pages; ?>" style="margin:2px;"><?php echo $pages; ?></a>
                 <?php
                 }
                 ?>

@@ -10,7 +10,7 @@ if (!empty($episode_unitary))
         { // Si l'épisode est un épisode déjà publié
         ?>
             <h1>Modifier l'épisode n°<?php echo $episode_unitary['episode_number']; ?></h1>
-            <form action="index.php?action=update_post&amp;id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
+            <form action="update_post/<?php echo $getid; ?>" method="post">
                 <p>
                     <label for="title">Titre de l'épisode</label><br />
                     <input class= "write__title update_title" type="text" id="title" name="title" value="<?php echo $episode_unitary['episode_title']; ?>" required>
@@ -28,7 +28,7 @@ if (!empty($episode_unitary))
         { // Si l'épisode est un épisode seulement enregistré
         ?>
             <h1>Modification de l'épisode</h1>
-            <form action="index.php?action=update_post&amp;id=<?php echo htmlspecialchars($_GET['id']); ?>" method="post">
+            <form action="update_post/<?php echo $getid; ?>" method="post">
                 <p>
                     <label for="number">Numéro de l'épisode</label><br />
                     <input class= "write__number update_number" type="number" id="number" name="number" min="1" value="<?php echo $episode_unitary['episode_number']; ?>" required>

@@ -6,7 +6,7 @@ ob_start();
 
 <section id="episode-write" class="write">
     <h1>Ecrire un nouvel épisode</h1>
-    <form action="index.php?action=write_post" method="post">
+    <form action="write_post" method="post">
         <p>
             <label for="number">Numéro de l'épisode</label><br />
             <input class="write__number" type="number" id="number" name="number" min="1" required>

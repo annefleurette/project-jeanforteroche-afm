@@ -22,19 +22,19 @@ if (!empty($episode_unitary_published))
                     <?php  
                     }else{
                     ?>
-                        <div class="episode-read__pagination"><a class="btn btn__read" href="index.php?action=episode&amp;number=<?php echo $episode_next; ?>">Episode suivant</a><div>
+                        <div class="episode-read__pagination"><a class="btn btn__read" href="episode/number-<?php echo $episode_next; ?>">Episode suivant</a><div>
                     <?php 
                     }   
                 }elseif($episode_current >= $nbepisodes)
                 {
                 ?>
-                    <div class="episode-read__pagination"><a class="btn btn__read" href="index.php?action=episode&amp;number=<?php echo $episode_before; ?>">Episode précédent</a></div>
+                    <div class="episode-read__pagination"><a class="btn btn__read" href="episode/number-<?php echo $episode_before; ?>">Episode précédent</a></div>
                 <?php
                 }else{
                 ?>
                     <div class="btn__together episode-read__pagination">
-                        <a class="btn btn__read btn__prev" href="index.php?action=episode&amp;number=<?php echo $episode_before; ?>">Episode précédent</a>
-                        <a class="btn btn__read btn__next" href="index.php?action=episode&amp;number=<?php echo $episode_next; ?>">Episode suivant</a>
+                        <a class="btn btn__read btn__prev" href="episode/number-<?php echo $episode_before; ?>">Episode précédent</a>
+                        <a class="btn btn__read btn__next" href="episode/number-<?php echo $episode_next; ?>">Episode suivant</a>
                     </div>
                 <?php 
                 }
@@ -58,7 +58,7 @@ if (!empty($episode_unitary_published))
                     <article class="col-md-8 col-sm-10 col-xs-12">
                         <p><strong><?php echo $comment_data['pseudo_members']; ?></strong> le <?php echo $comment_data['date_comment_fr']; ?></p>
                         <p><?php echo nl2br($comment_data['comment_comments']); ?></p>
-                        <form action="index.php?action=alert_post&amp;id=<?php echo $comment_data['id_comments'];?>" method="post">
+                        <form action="alert_post/<?php echo $comment_data['id_comments'];?>" method="post">
                             <input class="btn btn__alert" type="submit" value="Signaler">
                         </form>
                     </article>
@@ -80,11 +80,11 @@ if (!empty($episode_unitary_published))
         if(!isset($_SESSION['pseudo']))
         {
         ?>
-            <p class="data__no">Vous devez être connecté(e) pour laisser un commentaire. <a href="index.php?action=subscription">S'inscrire</a> ou <a href="index.php?action=login">se connecter</a>.</p>
+            <p class="data__no">Vous devez être connecté(e) pour laisser un commentaire. <a href="subscription">S'inscrire</a> ou <a href="login">se connecter</a>.</p>
         <?php
         }else{
         ?>
-            <form class="post-comment" action="index.php?action=comment_post&amp;number=<?php echo $getnumber;?>" method="post">
+            <form class="post-comment" action="comment_post/<?php echo $getnumber;?>" method="post">
                 <p>
                     <label for="comment">Saisissez votre commentaire</label><br />
                     <textarea id="comment" name="comment" minlength = "4" required></textarea>

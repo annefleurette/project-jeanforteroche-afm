@@ -5,6 +5,7 @@ use AnneFleurMarchat\JeanForteroche\Controller\FrontendController;
 use AnneFleurMarchat\JeanForteroche\Controller\BackendController;
 
 require('vendor/autoload.php');
+require_once('./src/config.php');
 
 try {
 	$frontendController = new FrontendController();
@@ -16,31 +17,31 @@ try {
 			case 'episode':
 				if(isset($_GET['number']))
 				{
-					$frontendController->displayEpisodeUnitary();
+					$frontendController->displayEpisodeUnitary($_GET['number']);
 				}else{
-					$frontendController->displayEpisodesList();
+					$frontendController->displayEpisodesList($_GET['page']);
 				}
 				break;
 			case 'comment_post':
-				$frontendController->addComment();
+				$frontendController->addComment($_SESSION['pseudo'], $_GET['number'], $_POST['comment']);
 				break;
 			case 'subscription':
 				$frontendController->subscription();
 				break;
 			case 'subscription_post':
-				$frontendController->subscriptionPost();
+				$frontendController->subscriptionPost($_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['password2']);
 				break;
 			case 'login':
 				$frontendController->login();
 				break;
 			case 'login_post':
-				$frontendController->loginPost();
+				$frontendController->loginPost($_POST['email'], $_POST['password'], $_POST['remember']);
 				break;
 			case 'logout':
 				$frontendController->logout();
 				break;
 			case 'unsubscribe':
-				$frontendController->unsubscribe();
+				$frontendController->unsubscribe($_SESSION['pseudo']);
 				break;
 			case 'admin':
 				if(isset($_SESSION['pseudo']) AND ($_SESSION['type'] == "admin"))
@@ -54,12 +55,12 @@ try {
 				$backendController->writeEpisode();
 				break;
 			case 'write_post':
-				$backendController->writeEpisodePost();
+				$backendController->writeEpisodePost($_POST['save'], $_POST['number'], $_POST['title'], $_POST['content']);
 				break;
 			case 'delete_episode':
 				if(isset($_GET['id']))
 				{
-					$backendController->deleteEpisode();
+					$backendController->deleteEpisode($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -67,18 +68,18 @@ try {
 			case 'update_episode':
 				if(isset($_GET['id']))
 				{
-					$backendController->updateEpisode();
+					$backendController->updateEpisode($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}
 				break;
 			case 'update_post':
-				$backendController->updateEpisodePost();
+				$backendController->updateEpisodePost($_POST['save'], $_POST['number'], $_POST['title'], $_POST['content'], $_GET['id']);
 				break;
 			case 'look_episode':
 				if(isset($_GET['id']))
 				{
-					$backendController->lookEpisode();
+					$backendController->lookEpisode($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -86,7 +87,7 @@ try {
 			case 'alert_post':
 				if(isset($_GET['id']))
 				{
-					$backendController->alertCommentPost();
+					$backendController->alertCommentPost($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -94,7 +95,7 @@ try {
 			case 'alert_cancel':
 				if(isset($_GET['id']))
 				{
-					$backendController->alertCommentCancel();
+					$backendController->alertCommentCancel($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}
@@ -102,7 +103,7 @@ try {
 			case 'delete_comment':
 				if(isset($_GET['id']))
 				{
-					$backendController->deleteComment();
+					$backendController->deleteComment($_GET['id']);
 				}else{
 					throw new Exception('Erreur');
 				}

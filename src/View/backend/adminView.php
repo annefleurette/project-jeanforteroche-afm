@@ -9,7 +9,7 @@ ob_start();
 	<section id="admin-episodes-published" class="novel-section"> <!-- Section qui liste les épisodes publiés -->
 		<div id="admin-episodes-published__flag"></div>
 		<h3>Episodes publiés</h3>
-		<p class="new-episode"><a href="index.php?action=write" class="btn btn__CTA btn__SizePlus"><i class="fas fa-plus"></i> Ajouter un nouvel épisode</a></p>
+		<p class="new-episode"><a href="write" class="btn btn__CTA btn__SizePlus"><i class="fas fa-plus"></i> Ajouter un nouvel épisode</a></p>
 	    <?php          
 	    if($nbepisode_published > 0)
 	    {
@@ -26,9 +26,9 @@ ob_start();
 							<h4><?php echo $published_episode['episode_title']; ?></h4>
 							<ul class="novel-episodes__list__buttons">
 								<!-- Lire l'épisode -->
-								<li><a class="btn btn__read btn__top" href="index.php?action=episode&amp;number=<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
+								<li><a class="btn btn__read btn__top" href="episode/number-<?php echo $published_episode['episode_number']; ?>" class="btn btn__admin">Lire</a></li>
 								<!-- Modifier l'épisode -->
-								<li><a class="btn btn__read btn__middle" href="index.php?action=update_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
+								<li><a class="btn btn__read btn__middle" href="update_episode/<?php echo $published_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
 								<!-- Supprimer l'épisode avec demande de confirmation - On ne peut supprimer que le dernier épisode publié -->
 								<?php
 								if($published_episode['episode_number'] == $nbepisode_published)
@@ -50,7 +50,7 @@ ob_start();
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn__no" data-dismiss="modal">Annuler</button>
-														<a href="index.php?action=delete_episode&amp;id=<?php echo $published_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
+														<a href="delete_episode/<?php echo $published_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
 													</div>
 												</div>
 											</div>
@@ -93,9 +93,9 @@ ob_start();
 							<h4><?php echo $inprogress_episode['episode_title']; ?></h4>
 							<ul class="novel-episodes__list__buttons">
 								<!-- Aperçu de l'épisode -->
-								<li><a class="btn btn__read btn__width-fixed__episodes btn__top" href="index.php?action=look_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
+								<li><a class="btn btn__read btn__width-fixed__episodes btn__top" href="look_episode/<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Aperçu</a></li>
 								<!-- Modifier l'épisode -->
-								<li><a class="btn btn__read btn__width-fixed__episodes btn__middle" href="index.php?action=update_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
+								<li><a class="btn btn__read btn__width-fixed__episodes btn__middle" href="update_episode/<?php echo $inprogress_episode['id']; ?>" class="btn btn__admin">Modifier</a></li>
 								<!-- Supprimer l'épisode avec demande de confirmation -->
 								<li><button class="btn btn__alert btn__bottom" type="button" data-toggle="modal" data-target="#Modal2">Supprimer</button></li>
 									<!-- Modal -->
@@ -113,7 +113,7 @@ ob_start();
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn__no" data-dismiss="modal">Annuler</button>
-													<a href="index.php?action=delete_episode&amp;id=<?php echo $inprogress_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
+													<a href="delete_episode/<?php echo $inprogress_episode['id']; ?>" class="btn btn__ok">Confirmer</a>
 												</div>
 											</div>
 										</div>
@@ -155,8 +155,8 @@ ob_start();
 							<p>Episode n°<?php echo $alert_comment['episod_number_episodes']; ?>
 							<p><strong><?php echo $alert_comment['pseudo_members']; ?></strong> le <?php echo $alert_comment['date_comment_fr']; ?></p>
 							<p><?php echo nl2br($alert_comment['comment_comments']); ?></p>
-							<a href="index.php?action=alert_cancel&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__read btn__top">Annuler le signalement</a>
-							<a href="index.php?action=delete_comment&amp;id=<?php echo $alert_comment['id_comments']; ?>" class="btn btn__alert btn__bottom">Supprimer</a>
+							<a href="alert_cancel/<?php echo $alert_comment['id_comments']; ?>" class="btn btn__read btn__top">Annuler le signalement</a>
+							<a href="delete_comment/<?php echo $alert_comment['id_comments']; ?>" class="btn btn__alert btn__bottom">Supprimer</a>
 						</article>
 					</li>
 				<?php
@@ -188,7 +188,7 @@ ob_start();
 							<p>Episode n°<?php echo $published_comment['episod_number_episodes']; ?>
 							<p><strong><?php echo $published_comment['pseudo_members']; ?></strong> le <?php echo $published_comment['date_comment_fr']; ?></p>
 							<p><?php echo nl2br($published_comment['comment_comments']); ?></p>
-							<a href="index.php?action=delete_comment&amp;id=<?php echo $published_comment['id_comments']; ?>" class="btn btn__alert">Supprimer</a>
+							<a href="delete_comment/<?php echo $published_comment['id_comments']; ?>" class="btn btn__alert">Supprimer</a>
 						</article>
 					</li>
 				<?php

@@ -12,7 +12,7 @@ if (!empty($lookepisode))
             <div class="col-md-8 col-sm-10 col-xs-12">
                 <div class="episode-read__content"><p><?php echo $lookepisode['episode_content'];?></p></div>
                 <div class="episode-look__back">
-                    <a class="btn btn__read" href="index.php?action=admin">Retour</a>
+                    <a class="btn btn__read" href="admin">Retour</a>
                 </div>
             </div>
         </div>
