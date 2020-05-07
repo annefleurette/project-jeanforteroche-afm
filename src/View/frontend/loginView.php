@@ -23,7 +23,7 @@ ob_start();
                 <input class="btn btn__CTA" type="submit" value="Se connecter">
             </p>
             <p>
-                <input type="checkbox" id="remember" name="remember">
+                <input class="remember-input" type="checkbox" id="remember" name="remember">
                 <label for="remember">Se souvenir de moi</label>
             </p>
         </form>

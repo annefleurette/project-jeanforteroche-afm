@@ -516,6 +516,10 @@ footer p a:hover {
 	min-width: 290px;
 }
 
+.identification form .remember-input {
+	min-width: 10px;
+}
+
 .identification form .btn {
 	margin-bottom: 30px;
 }
