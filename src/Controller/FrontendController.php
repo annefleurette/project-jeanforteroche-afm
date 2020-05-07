@@ -65,7 +65,7 @@ class FrontendController {
 		require('./src/View/frontend/episodeView.php');
 	}
 
-	public function addComment($sessionpseudo,$getnumber, $postcomment)
+	public function addComment($sessionpseudo, $getnumber, $postcomment)
 	{
 		$commentManager = new CommentManager();
 		$memberManager = new MemberManager();
@@ -74,8 +74,8 @@ class FrontendController {
 		{ // Si l'utilisateur est bien connecté
 			if (isset($postcomment))
 			{ // Si le commentaire existe bien
-				$getnumber = htmlspecialchars($getnumber);
 				$postcomment = htmlspecialchars($postcomment);
+				$getnumber = htmlspecialchars($getnumber);
 				// On récupère l'id d'un pseudo de membre
 				$exe_idpseudo = $memberManager->getMemberId($sessionpseudo);
 				// On récupère l'id d'une épisode donné

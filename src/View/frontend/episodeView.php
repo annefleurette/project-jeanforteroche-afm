@@ -84,7 +84,7 @@ if (!empty($episode_unitary_published))
         <?php
         }else{
         ?>
-            <form class="post-comment" action="comment_post/<?php echo $getnumber;?>" method="post">
+            <form class="post-comment" action="comment_post/number-<?php echo $getnumber;?>" method="post">
                 <p>
                     <label for="comment">Saisissez votre commentaire</label><br />
                     <textarea id="comment" name="comment" minlength = "4" required></textarea>
