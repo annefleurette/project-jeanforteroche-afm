@@ -203,15 +203,6 @@ class FrontendController {
 			$_SESSION = array();
 			session_destroy();
 			header('Location: http://www.jeanforteroche.com/index');
-			$exe_email = $memberManager->getMemberEmail($sessionpseudo);
-			//Envoi d'un email de confirmation
-				$to      = $exe_email['email'];
-				$subject = 'Confirmation de désinscription';
-				$message = 'Nous vous confirmons la suppression de votre compte sur le blog de Jean Forteroche. Dans l\'espoir de vous revoir : www.jeanforteroche.com';
-				$headers = array(
-					'From' => 'no-reply@jeanforteroche.com',
-				);
-				mail($to, $subject, $message, $headers);
 		}else{
 			throw new \Exception('Impossible de supprimer votre compte');
 		}
