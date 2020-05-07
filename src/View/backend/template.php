@@ -3,17 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
-        <base href="<?php echo $GLOBALS['root']; ?>">
+        <base href="http://www.jeanforteroche.com/">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Concert+One|Lato:300,400,700|Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/css/style.css" />
+        <link rel="shortcut icon" type="image/png" href="./public/images/logo.png"/>
         <title><?php $head_title ?></title>
         <script src='https://cdn.tiny.cloud/1/rusvh5uity3vzz9zncbvyfu2ngucer16rijxcr2fhxwkn4mb/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
         <script src="https://kit.fontawesome.com/3492d8c303.js" crossorigin="anonymous"></script>
         <script>
             tinymce.init({
             selector: '#content',
-            content_css : 'public/css/style.css',
+            content_css : 'http://www.jeanforteroche.com/public/css/style.css',
             inline_styles : false,
             plugins: "autoresize",
             autoresize_overflow_padding: 15,

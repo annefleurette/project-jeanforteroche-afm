@@ -65,7 +65,7 @@ class FrontendController {
 		require('./src/View/frontend/episodeView.php');
 	}
 
-	public function addComment($sessionpseudo, $getnumber, $postcomment)
+	public function addComment($sessionpseudo,$getnumber, $postcomment)
 	{
 		$commentManager = new CommentManager();
 		$memberManager = new MemberManager();
@@ -82,9 +82,9 @@ class FrontendController {
 				$exe_idepisode = $episodeManager->getEpisodeId($getnumber);
 				// On enregistre le commentaire dans la base de données
 				$newcomment = $commentManager->postComment($exe_idepisode, $exe_idpseudo, $postcomment);
-				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Votre commentaire est bien enregistré !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="http://www.jeanforteroche.com/episode/number-<?php echo $getnumber;?>">Retour</a></p></div>'; 
+				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Votre commentaire est bien enregistré !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="http://www.jeanforteroche.com/episode/number-' .$getnumber. '">Retour</a></p></div>'; 
 			}else{
-				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas saisi votre commentaire</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="http://www.jeanforteroche.com/episode/number-<?php echo $getnumber;?>">Retour</a></p></div>'; 
+				echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous n\'avez pas saisi votre commentaire</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="http://www.jeanforteroche.com/episode/number-' .$getnumber. '">Retour</a></p></div>'; 
 			}   
 		}else{ // Sinon renvoi vers la pages Inscription/Connexion
 			header('Location: http://www.jeanforteroche.com/subscription');
@@ -99,7 +99,7 @@ class FrontendController {
 	public function subscriptionPost($postpseudo, $postemail, $postpassword, $postpassword2)
 	{
 		$memberManager = new MemberManager();
-		if (isset($postpseudo) AND isset($postemail) AND isset($postpassword) AND isset($postpassword))
+		if (isset($postpseudo) AND isset($postemail) AND isset($postpassword) AND isset($postpassword2))
 		{
 			// On récupère tous les pseudos des membres inscrits
 			$exe_pseudos = $memberManager->getMembersPseudo();
@@ -123,7 +123,7 @@ class FrontendController {
 					//Envoi d'un email de confirmation
 						$to      = $postemail;
 						$subject = 'Confirmation d\'inscription';
-						$message = 'Merci, votre inscription au blog de Jean Forteroche est bien confirmée ! Pour se connecter : www.jeanforteroche.com';
+						$message = 'Merci, nous vous confirmons votre inscription au blog de Jean Forteroche ! Pour se connecter : www.jeanforteroche.com';
 						$headers = array(
 							'From' => 'no-reply@jeanforteroche.com',
 						);
@@ -207,9 +207,9 @@ class FrontendController {
 			//Envoi d'un email de confirmation
 				$to      = $exe_email['email'];
 				$subject = 'Confirmation de désinscription';
-				$message = 'Nous vous confirmons votre désinscription au blog de Jean Forteroche. Dans l\'espoir de vous revoir : www.jeanforteroche.com';
+				$message = 'Nous vous confirmons la suppression de votre compte sur le blog de Jean Forteroche. Dans l\'espoir de vous revoir : www.jeanforteroche.com';
 				$headers = array(
-					'From' => 'noreply@jeanforteroche.com',
+					'From' => 'no-reply@jeanforteroche.com',
 				);
 				mail($to, $subject, $message, $headers);
 		}else{

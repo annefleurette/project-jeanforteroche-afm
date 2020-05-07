@@ -149,10 +149,10 @@ class BackendController {
                 }else{
                     echo '<div><p style="font-family: Lato; color: #122459; text-align: center; margin-top: 54px; margin-bottom: 50px; padding: 0 15px;">Vous avez déjà publié ce numéro d\'épisode ou cet épisode n\'est pas le suivant du dernier épisode publié !</p><p style="font-family: Lato; text-align: center; color: #122459; padding: 0 15px;"><a href="http://www.jeanforteroche.com/admin">Recommencer</a></p></div>';
                 }
-            }elseif(!isset($postnumber) AND isset($postitle) AND isset($postcontent))
+            }elseif(!isset($postnumber) AND isset($posttitle) AND isset($postcontent))
             {
                 // Actualisation de l'épisode déjà publié
-                $posttitle = htmlspecialchars($postitle);
+                $posttitle = htmlspecialchars($posttitle);
                 $getid = htmlspecialchars($getid);
                 $update_episode_published = $episodeManager->updateEpisodePublished($posttitle, $postcontent, $getid);
                 header('Location: http://www.jeanforteroche.com/admin');

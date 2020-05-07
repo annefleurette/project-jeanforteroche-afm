@@ -5,7 +5,6 @@ use AnneFleurMarchat\JeanForteroche\Controller\FrontendController;
 use AnneFleurMarchat\JeanForteroche\Controller\BackendController;
 
 require('vendor/autoload.php');
-require_once('./src/config.php');
 
 try {
 	$frontendController = new FrontendController();
@@ -23,7 +22,7 @@ try {
 				}
 				break;
 			case 'comment_post':
-				$frontendController->addComment($_SESSION['pseudo'], $_GET['number'], $_POST['comment']);
+				$frontendController->addComment($_SESSION['pseudo'],$_GET['number'], $_POST['comment']);
 				break;
 			case 'subscription':
 				$frontendController->subscription();
