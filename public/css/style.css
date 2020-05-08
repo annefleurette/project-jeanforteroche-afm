@@ -610,8 +610,6 @@ footer p a:hover {
 
 .episode-write__action {
 	text-align: center;
-    margin-top: 40px;
-    padding: 0px 15px;
 }
 
 .tox-editor-header {
@@ -726,6 +724,10 @@ footer p a:hover {
 	#episode-comments form textarea {
 		min-width: 350px;
 		height: 200px;
+	}
+
+	.modal-footer {
+		justify-content: center;
 	}
 }
 

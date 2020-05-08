@@ -19,7 +19,7 @@ ob_start();
             <label for="content">Contenu de l'épisode</label><br />
             <textarea id="content" name="content"></textarea>
         </p>
-        <p class="episode-write__action">
+        <p class="episode-write__action btn__together">
             <input class="btn btn__read btn__prev" type="submit" name="save" value="Enregistrer">
             <input class="btn btn__read btn__next" type="submit" name="publish" value="Publier">
         </p>
