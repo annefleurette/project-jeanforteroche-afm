@@ -8,7 +8,8 @@
         <link href="https://fonts.googleapis.com/css?family=Concert+One|Lato:300,400,700|Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/css/style.css" />
         <link rel="shortcut icon" type="image/png" href="./public/images/logo.png"/>
-        <title><?php $head_title ?></title>
+        <title><?php echo $head_title; ?></title>
+        <meta name="robots" content="noindex">
         <script src='https://cdn.tiny.cloud/1/rusvh5uity3vzz9zncbvyfu2ngucer16rijxcr2fhxwkn4mb/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
         <script src="https://kit.fontawesome.com/3492d8c303.js" crossorigin="anonymous"></script>
         <script>

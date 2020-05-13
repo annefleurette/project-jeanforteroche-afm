@@ -8,8 +8,8 @@
         <link href="https://fonts.googleapis.com/css?family=Concert+One|Lato:300,400,700|Pacifico&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/css/style.css" />
         <link rel="shortcut icon" type="image/png" href="./public/images/logo.png"/>
-        <title><?php $head_title ?></title>
-        <meta name="description" content="<?php $head_description ?>">
+        <title><?php echo $head_title; ?></title>
+        <meta name="description" content="<?php echo $head_description; ?>">
         <script src="https://kit.fontawesome.com/3492d8c303.js" crossorigin="anonymous"></script>
     </head>
     <body>
